@@ -40,11 +40,16 @@
                                         <color key="textColor" red="0.98451274629999996" green="0.72469300029999995" blue="0.061607860030000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6L-CX-gS7">
+                                        <rect key="frame" x="184" y="246" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.74960481517509725" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="khM-FO-kCQ" firstAttribute="top" secondItem="Jjr-h7-5UN" secondAttribute="top" constant="8" id="1as-2l-UYy"/>
                                     <constraint firstAttribute="trailing" secondItem="aDZ-Qu-lXD" secondAttribute="trailing" constant="28" id="BLQ-8t-JZP"/>
+                                    <constraint firstItem="k6L-CX-gS7" firstAttribute="centerX" secondItem="Jjr-h7-5UN" secondAttribute="centerX" id="M5K-Om-Acl"/>
                                     <constraint firstItem="aDZ-Qu-lXD" firstAttribute="top" secondItem="khM-FO-kCQ" secondAttribute="bottom" constant="41.5" id="aQs-Jf-wSs"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="khM-FO-kCQ" secondAttribute="trailing" constant="69" id="hKY-wf-OPK"/>
                                     <constraint firstItem="aDZ-Qu-lXD" firstAttribute="leading" secondItem="Jjr-h7-5UN" secondAttribute="leading" constant="28" id="l4P-xF-tPl"/>
