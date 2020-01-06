@@ -1,24 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="q6w-GV-IJE">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Food Truck TrackR-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FoodTruckTrackr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="load_splash" translatesAutoresizingMaskIntoConstraints="NO" id="kSR-ov-9jo">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="404"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m83-tp-Lm5">
+                                <rect key="frame" x="0.0" y="404" width="414" height="404"/>
+                                <color key="backgroundColor" red="0.98451274629999996" green="0.72469300029999995" blue="0.061607860030000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jjr-h7-5UN">
+                                <rect key="frame" x="0.0" y="40" width="414" height="364"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where's da' Foodtruck?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khM-FO-kCQ">
+                                        <rect key="frame" x="69.5" y="8" width="275.5" height="88.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="275.5" id="UTh-2K-oz6"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="37"/>
+                                        <color key="textColor" red="0.98451274629999996" green="0.72469300029999995" blue="0.061607860030000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where's da' Foodtruck?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDZ-Qu-lXD">
+                                        <rect key="frame" x="28" y="138" width="358" height="89"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="37"/>
+                                        <color key="textColor" red="0.98451274629999996" green="0.72469300029999995" blue="0.061607860030000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.74960481517509725" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="khM-FO-kCQ" firstAttribute="top" secondItem="Jjr-h7-5UN" secondAttribute="top" constant="8" id="1as-2l-UYy"/>
+                                    <constraint firstAttribute="trailing" secondItem="aDZ-Qu-lXD" secondAttribute="trailing" constant="28" id="BLQ-8t-JZP"/>
+                                    <constraint firstItem="aDZ-Qu-lXD" firstAttribute="top" secondItem="khM-FO-kCQ" secondAttribute="bottom" constant="41.5" id="aQs-Jf-wSs"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="khM-FO-kCQ" secondAttribute="trailing" constant="69" id="hKY-wf-OPK"/>
+                                    <constraint firstItem="aDZ-Qu-lXD" firstAttribute="leading" secondItem="Jjr-h7-5UN" secondAttribute="leading" constant="28" id="l4P-xF-tPl"/>
+                                    <constraint firstItem="khM-FO-kCQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Jjr-h7-5UN" secondAttribute="leading" constant="69.5" id="qD7-aa-GEn"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.3526054025" green="0.30432894830000001" blue="0.30728352069999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Jjr-h7-5UN" secondAttribute="trailing" id="00g-kC-o4r"/>
+                            <constraint firstItem="m83-tp-Lm5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Al4-7X-l6c"/>
+                            <constraint firstAttribute="trailing" secondItem="kSR-ov-9jo" secondAttribute="trailing" id="LkE-cD-N3Q"/>
+                            <constraint firstItem="kSR-ov-9jo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Rj9-c7-nHv"/>
+                            <constraint firstItem="kSR-ov-9jo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Uhl-sg-JfK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="m83-tp-Lm5" secondAttribute="trailing" id="Vyi-uI-aDB"/>
+                            <constraint firstItem="Jjr-h7-5UN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aE6-kh-8Jf"/>
+                            <constraint firstItem="m83-tp-Lm5" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="hnk-6j-Vfr"/>
+                            <constraint firstItem="Jjr-h7-5UN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="k3P-bm-RnM"/>
+                            <constraint firstAttribute="centerY" secondItem="kSR-ov-9jo" secondAttribute="bottom" id="lql-ur-3rV"/>
+                            <constraint firstItem="m83-tp-Lm5" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="34" id="o3o-WN-RGV"/>
+                            <constraint firstItem="m83-tp-Lm5" firstAttribute="top" secondItem="Jjr-h7-5UN" secondAttribute="bottom" id="zVr-qf-Gcd"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Food Truck TrackR" id="CYM-6I-9zm"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="828.98550724637687" y="137.94642857142856"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="10c-AM-K5h">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q6w-GV-IJE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="O5z-H7-GeV">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.3526054025" green="0.30432894830000001" blue="0.30728352069999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.98451274629999996" green="0.72469300029999995" blue="0.061607860030000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="inc-aH-a6t"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9UV-0S-o5R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="load_splash" width="1834" height="2752"/>
+    </resources>
 </document>
