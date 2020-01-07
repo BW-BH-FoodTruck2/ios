@@ -65,14 +65,12 @@ class VendorRepresentation: Codable, Equatable {
 struct VendorLogin: Codable {
     var username: String
     var password: String
-    var role: Role
-    var bearer: Bearer?
+    var role: Int
 }
 
 struct VendorSignup: Codable {
     var username: String
     var password: String
-    var email: String
-    var role: Role
+    var role: Int
 }
 
