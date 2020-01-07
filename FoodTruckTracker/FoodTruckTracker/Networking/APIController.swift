@@ -30,13 +30,12 @@ class APIController {
             return
         }
         var request = URLRequest(url: requestURL)
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = HTTPMethod.post.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         let encoder = JSONEncoder()
         switch role {
         case .diner:
-            let consumer = ConsumerSignup(username: username, password: password, email: email, role: role.rawValue, location: "")
-            print(consumer)
+            let consumer = ConsumerSignup(username: username, password: password, role: role.rawValue, location: "")
             do {
                 let consumerData = try encoder.encode(consumer)
                 request.httpBody = consumerData
@@ -45,7 +44,7 @@ class APIController {
                 return
             }
         case .truckOperator:
-            let vendor = VendorSignup(username: username, password: password, email: email, role: role.rawValue)
+            let vendor = VendorSignup(username: username, password: password, role: role.rawValue)
             do {
                 let vendorData = try encoder.encode(vendor)
                 request.httpBody = vendorData
@@ -81,8 +80,8 @@ class APIController {
             return
         }
         var request = URLRequest(url: requestURL)
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = HTTPMethod.post.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         let encoder = JSONEncoder()
         switch role {
         case .diner:
@@ -104,43 +103,44 @@ class APIController {
                 return
             }
         }
-        
         URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                print(error.localizedDescription)
+            guard error == nil else {
+                completion(nil, nil, nil, error)
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse, response.statusCode != 200 {
+                completion(nil, nil, nil, NSError())
+                return
+            }
+            
+            guard let data = data else {
                 DispatchQueue.main.async {
-                    completion(nil, nil, nil, error)
-                    return
+                    completion(nil, nil, nil, NSError(domain: "", code: 500, userInfo: nil))
                 }
-                
-                guard let data = data else {
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            do {
+                let bearer = try decoder.decode(Bearer.self, from: data)
+                switch role {
+                case .diner:
+                    let consumer = ConsumerLogin(username: username, password: password, role: role.rawValue)
                     DispatchQueue.main.async {
-                        completion(nil, nil, nil, NSError())
+                        completion(consumer, nil, bearer, nil)
+                        return
                     }
-                    return
-                }
-                print(data)
-                let decoder = JSONDecoder()
-                do {
-                    let bearer = try decoder.decode(Bearer.self, from: data)
-                    switch role {
-                    case .diner:
-                        let consumer = ConsumerLogin(username: username, password: password, role: role.rawValue)
-                        DispatchQueue.main.async {
-                            completion(consumer, nil, bearer, nil)
-                            return
-                        }
-                    case .truckOperator:
-                        let vendor = VendorLogin(username: username, password: password, role: role.rawValue)
-                        DispatchQueue.main.async {
-                            completion(nil, vendor, bearer, nil)
-                            return
-                        }
+                case .truckOperator:
+                    let vendor = VendorLogin(username: username, password: password, role: role.rawValue)
+                    DispatchQueue.main.async {
+                        completion(nil, vendor, bearer, nil)
+                        return
                     }
-                } catch let decodeError {
-                    completion(nil, nil, nil, decodeError)
-                    return
                 }
+            } catch let decodeError {
+                completion(nil, nil, nil, decodeError)
+                return
             }
         }.resume()
     }

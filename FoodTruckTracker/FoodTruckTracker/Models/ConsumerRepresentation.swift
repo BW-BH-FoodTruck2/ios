@@ -83,7 +83,6 @@ struct ConsumerLogin: Codable { // To log in the user only needs to input a user
 struct ConsumerSignup: Codable { // To sign up the user needs to put in a username, password, and email
     var username: String
     var password: String
-    var email: String
     var role: Int
     var location: String
 }

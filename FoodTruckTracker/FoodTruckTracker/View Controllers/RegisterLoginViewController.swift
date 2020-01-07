@@ -93,30 +93,11 @@ class RegisterLoginViewController: UIViewController {
             guard let username = usernameTextField.text, !username.isEmpty,
                 let password = passwordTextField.text, !password.isEmpty,
                 let role = Role(rawValue: roleSegmentedControl.selectedSegmentIndex + 1) else { return }
-            apiController.login(with: username, password: password, role: role) { [weak self] consumer, vendor, bearer, error in
-                guard let self = self else { return }
+            apiController.login(with: username, password: password, role: role) { consumer, vendor, bearer, error in
                 if let error = error {
                     self.showAlert(title: "Error", message: error.localizedDescription)
                 }
-                
-                self.registering.toggle()
-                self.updateViews()
-                
-                if let consumer = consumer {
-                    self.consumer = consumer
-                    self.showAlert(title: "Log In Successful", message: "")
-                    if let consumerPrint = self.consumer {
-                        print(consumerPrint)
-                    }
-                }
-                
-                if let vendor = vendor {
-                    self.vendor = vendor
-                    self.showAlert(title: "Log In Successful", message: "")
-                    if let vendorPrint = self.vendor {
-                        print(vendorPrint)
-                    }
-                }
+                self.showAlert(title: "Log In Successful", message: "")
             }
         }
     }

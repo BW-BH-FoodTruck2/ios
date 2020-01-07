@@ -71,7 +71,6 @@ struct VendorLogin: Codable {
 struct VendorSignup: Codable {
     var username: String
     var password: String
-    var email: String
     var role: Int
 }
 
