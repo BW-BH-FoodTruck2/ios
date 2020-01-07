@@ -20,8 +20,9 @@ enum Role: Int, Codable {
     case truckOperator
 }
 
+let baseURL = URL(string: "https://food-truck-trackr.herokuapp.com/api")
+
 class APIController {
-    private let baseURL = URL(string: "https://food-truck-trackr.herokuapp.com/api")
     
     func register(with username: String, password: String, email: String, role: Role, location: String? = "", completion: @escaping (Error?) -> ()) {
         guard let requestURL = baseURL?.appendingPathComponent("auth").appendingPathComponent("register") else {
@@ -29,11 +30,13 @@ class APIController {
             return
         }
         var request = URLRequest(url: requestURL)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = HTTPMethod.post.rawValue
         let encoder = JSONEncoder()
         switch role {
         case .diner:
-            let consumer = ConsumerSignup(username: username, password: password, email: email, role: role)
+            let consumer = ConsumerSignup(username: username, password: password, email: email, role: role.rawValue, location: "")
+            print(consumer)
             do {
                 let consumerData = try encoder.encode(consumer)
                 request.httpBody = consumerData
@@ -42,7 +45,7 @@ class APIController {
                 return
             }
         case .truckOperator:
-            let vendor = VendorSignup(username: username, password: password, email: email, role: role)
+            let vendor = VendorSignup(username: username, password: password, email: email, role: role.rawValue)
             do {
                 let vendorData = try encoder.encode(vendor)
                 request.httpBody = vendorData
@@ -60,73 +63,82 @@ class APIController {
                 return
             }
             
+            if let response = response as? HTTPURLResponse, response.statusCode != 201 {
+                DispatchQueue.main.async {
+                    completion(NSError(domain: "", code: response.statusCode, userInfo: nil))
+                }
+            }
+            
             DispatchQueue.main.async {
                 completion(nil)
             }
         }.resume()
     }
     
-    func login(with username: String, password: String, role: Role, completion: @escaping (ConsumerLogin?, VendorLogin?, Error?) -> ()) {
+    func login(with username: String, password: String, role: Role, completion: @escaping (ConsumerLogin?, VendorLogin?, Bearer?, Error?) -> ()) {
         guard let requestURL = baseURL?.appendingPathComponent("auth").appendingPathComponent("login") else {
-            completion(nil, nil, NSError())
+            completion(nil, nil, nil, NSError())
             return
         }
         var request = URLRequest(url: requestURL)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = HTTPMethod.post.rawValue
         let encoder = JSONEncoder()
         switch role {
         case .diner:
-            let consumer = ConsumerLogin(username: username, password: password, role: role)
+            let consumer = ConsumerLogin(username: username, password: password, role: role.rawValue)
             do {
                 let consumerData = try encoder.encode(consumer)
                 request.httpBody = consumerData
             } catch let encodeError {
-                completion(nil, nil, encodeError)
+                completion(nil, nil, nil, encodeError)
                 return
             }
         case .truckOperator:
-            let vendor = VendorLogin(username: username, password: password, role: role)
+            let vendor = VendorLogin(username: username, password: password, role: role.rawValue)
             do {
                 let vendorData = try encoder.encode(vendor)
                 request.httpBody = vendorData
             } catch let encodeError {
-                completion(nil, nil, encodeError)
+                completion(nil, nil, nil, encodeError)
                 return
             }
         }
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
+                print(error.localizedDescription)
                 DispatchQueue.main.async {
-                    completion(nil, nil, error)
+                    completion(nil, nil, nil, error)
+                    return
                 }
                 
                 guard let data = data else {
                     DispatchQueue.main.async {
-                        completion(nil, nil, NSError())
+                        completion(nil, nil, nil, NSError())
                     }
                     return
                 }
-                
+                print(data)
                 let decoder = JSONDecoder()
                 do {
                     let bearer = try decoder.decode(Bearer.self, from: data)
                     switch role {
                     case .diner:
-                        let consumer = ConsumerLogin(username: username, password: password, role: role, bearer: bearer)
+                        let consumer = ConsumerLogin(username: username, password: password, role: role.rawValue)
                         DispatchQueue.main.async {
-                            completion(consumer, nil, nil)
+                            completion(consumer, nil, bearer, nil)
                             return
                         }
                     case .truckOperator:
-                        let vendor = VendorLogin(username: username, password: password, role: role, bearer: bearer)
+                        let vendor = VendorLogin(username: username, password: password, role: role.rawValue)
                         DispatchQueue.main.async {
-                            completion(nil, vendor, nil)
+                            completion(nil, vendor, bearer, nil)
                             return
                         }
                     }
                 } catch let decodeError {
-                    completion(nil, nil, decodeError)
+                    completion(nil, nil, nil, decodeError)
                     return
                 }
             }

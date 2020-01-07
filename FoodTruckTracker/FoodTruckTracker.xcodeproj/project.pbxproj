@@ -11,7 +11,7 @@
 		6303240723C4D4840041566D /* Bearer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303240623C4D4840041566D /* Bearer.swift */; };
 		DDD5E28A23C3CA33005CCD64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD5E28923C3CA33005CCD64 /* AppDelegate.swift */; };
 		DDD5E28C23C3CA33005CCD64 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD5E28B23C3CA33005CCD64 /* SceneDelegate.swift */; };
-		DDD5E28E23C3CA33005CCD64 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD5E28D23C3CA33005CCD64 /* ViewController.swift */; };
+		DDD5E28E23C3CA33005CCD64 /* RegisterLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD5E28D23C3CA33005CCD64 /* RegisterLoginViewController.swift */; };
 		DDD5E29123C3CA33005CCD64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDD5E28F23C3CA33005CCD64 /* Main.storyboard */; };
 		DDD5E29423C3CA33005CCD64 /* FoodTruckTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DDD5E29223C3CA33005CCD64 /* FoodTruckTracker.xcdatamodeld */; };
 		DDD5E29623C3CA37005CCD64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDD5E29523C3CA37005CCD64 /* Assets.xcassets */; };
@@ -51,7 +51,7 @@
 		DDD5E28623C3CA33005CCD64 /* FoodTruckTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodTruckTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDD5E28923C3CA33005CCD64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDD5E28B23C3CA33005CCD64 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DDD5E28D23C3CA33005CCD64 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DDD5E28D23C3CA33005CCD64 /* RegisterLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterLoginViewController.swift; sourceTree = "<group>"; };
 		DDD5E29023C3CA33005CCD64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DDD5E29323C3CA33005CCD64 /* FoodTruckTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodTruckTracker.xcdatamodel; sourceTree = "<group>"; };
 		DDD5E29523C3CA37005CCD64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -192,7 +192,7 @@
 		DDD5E2BF23C3CF30005CCD64 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				DDD5E28D23C3CA33005CCD64 /* ViewController.swift */,
+				DDD5E28D23C3CA33005CCD64 /* RegisterLoginViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -353,7 +353,7 @@
 				6303240523C4CBBA0041566D /* APIController.swift in Sources */,
 				DDD5E2D023C4BDBB005CCD64 /* ConsumerRepresentation.swift in Sources */,
 				DDD5E2C323C3DCA3005CCD64 /* CoreDataStack.swift in Sources */,
-				DDD5E28E23C3CA33005CCD64 /* ViewController.swift in Sources */,
+				DDD5E28E23C3CA33005CCD64 /* RegisterLoginViewController.swift in Sources */,
 				DDD5E28A23C3CA33005CCD64 /* AppDelegate.swift in Sources */,
 				DDD5E2CA23C4BCAF005CCD64 /* LocationRepresentation.swift in Sources */,
 				DDD5E29423C3CA33005CCD64 /* FoodTruckTracker.xcdatamodeld in Sources */,

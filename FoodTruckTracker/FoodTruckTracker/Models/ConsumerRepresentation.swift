@@ -77,13 +77,13 @@ class ConsumerRepresentation: Codable, Equatable {
 struct ConsumerLogin: Codable { // To log in the user only needs to input a username and password
     var username: String
     var password: String
-    var role: Role
-    var bearer: Bearer?
+    var role: Int
 }
 
 struct ConsumerSignup: Codable { // To sign up the user needs to put in a username, password, and email
     var username: String
     var password: String
     var email: String
-    var role: Role
+    var role: Int
+    var location: String
 }
