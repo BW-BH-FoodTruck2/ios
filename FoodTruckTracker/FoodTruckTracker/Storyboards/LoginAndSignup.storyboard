@@ -15,8 +15,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Unm-zU-ZtP">
-                                <rect key="frame" x="1" y="230" width="117" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Unm-zU-ZtP">
+                                <rect key="frame" x="16" y="118" width="82.5" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="FJP-Up-ERN"/>
                                     <constraint firstAttribute="width" constant="87" id="vmk-zc-43F"/>
@@ -25,36 +25,35 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CjP-tn-jx9">
-                                <rect key="frame" x="157" y="308" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="POc-gb-fxa">
-                                <rect key="frame" x="130" y="366" width="97" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vfw-n4-IYS">
-                                <rect key="frame" x="130" y="431" width="97" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zfo-Zv-IYX">
-                                <rect key="frame" x="130" y="515" width="97" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="TQv-ck-y2k">
+                                <rect key="frame" x="50" y="163" width="294.5" height="182"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="POc-gb-fxa">
+                                        <rect key="frame" x="0.0" y="0.0" width="294.5" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vfw-n4-IYS">
+                                        <rect key="frame" x="0.0" y="74" width="294.5" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zfo-Zv-IYX">
+                                        <rect key="frame" x="0.0" y="148" width="294.5" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Yaf-eK-AJS" firstAttribute="trailing" secondItem="Unm-zU-ZtP" secondAttribute="trailing" constant="296" id="ITf-Vp-p4V"/>
-                            <constraint firstItem="Unm-zU-ZtP" firstAttribute="leading" secondItem="Yaf-eK-AJS" secondAttribute="leading" constant="1" id="xMw-GM-Qy1"/>
+                            <constraint firstItem="Yaf-eK-AJS" firstAttribute="trailing" secondItem="TQv-ck-y2k" secondAttribute="trailing" constant="50" id="alB-28-jn9"/>
+                            <constraint firstItem="TQv-ck-y2k" firstAttribute="top" secondItem="Unm-zU-ZtP" secondAttribute="bottom" constant="16" id="bb8-Cy-Zf9"/>
+                            <constraint firstItem="TQv-ck-y2k" firstAttribute="leading" secondItem="Yaf-eK-AJS" secondAttribute="leading" constant="50" id="oaG-s8-yDU"/>
+                            <constraint firstItem="Unm-zU-ZtP" firstAttribute="top" secondItem="Yaf-eK-AJS" secondAttribute="top" constant="30" id="rW8-Xb-4Ot"/>
+                            <constraint firstItem="Unm-zU-ZtP" firstAttribute="leading" secondItem="Yaf-eK-AJS" secondAttribute="leading" constant="16" id="xMw-GM-Qy1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Yaf-eK-AJS"/>
                     </view>
