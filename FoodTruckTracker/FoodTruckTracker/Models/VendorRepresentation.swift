@@ -23,6 +23,7 @@ class VendorRepresentation: Codable, Equatable {
     var email: String
     var ownedTrucks: [TruckRepresentation]
     var identifier: UUID
+    var bearer: Bearer?
 
     init(username: String, password: String, email: String, ownedTrucks: [TruckRepresentation], identifier: UUID) {
         self.username = username
@@ -64,11 +65,14 @@ class VendorRepresentation: Codable, Equatable {
 struct VendorLogin: Codable {
     var username: String
     var password: String
+    var role: Role
+    var bearer: Bearer?
 }
 
 struct VendorSignup: Codable {
     var username: String
     var password: String
     var email: String
+    var role: Role
 }
 

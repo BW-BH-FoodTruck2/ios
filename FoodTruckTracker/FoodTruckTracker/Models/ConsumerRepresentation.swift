@@ -25,6 +25,7 @@ class ConsumerRepresentation: Codable, Equatable {
     var currentLocation: LocationRepresentation
     var favoriteTrucks: [TruckRepresentation]
     var identifier: UUID
+    var bearer: Bearer?
 
     init(username: String, password: String, email: String, currentLocation: LocationRepresentation, favoriteTrucks: [TruckRepresentation], identifier: UUID) {
         self.username = username
@@ -76,10 +77,13 @@ class ConsumerRepresentation: Codable, Equatable {
 struct ConsumerLogin: Codable { // To log in the user only needs to input a username and password
     var username: String
     var password: String
+    var role: Role
+    var bearer: Bearer?
 }
 
 struct ConsumerSignup: Codable { // To sign up the user needs to put in a username, password, and email
     var username: String
     var password: String
     var email: String
+    var role: Role
 }
