@@ -19,6 +19,11 @@
 		DDD5E2C123C3CF57005CCD64 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDD5E2C023C3CF57005CCD64 /* Default-568h@2x.png */; };
 		DDD5E2C323C3DCA3005CCD64 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD5E2C223C3DCA3005CCD64 /* CoreDataStack.swift */; };
 		DDD5E2C523C3DEE9005CCD64 /* LoginAndSignup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDD5E2C423C3DEE9005CCD64 /* LoginAndSignup.storyboard */; };
+		DDD5E2C823C4BC20005CCD64 /* TruckRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD5E2C723C4BC20005CCD64 /* TruckRepresentation.swift */; };
+		DDD5E2CA23C4BCAF005CCD64 /* LocationRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD5E2C923C4BCAF005CCD64 /* LocationRepresentation.swift */; };
+		DDD5E2CC23C4BCD7005CCD64 /* VendorRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD5E2CB23C4BCD7005CCD64 /* VendorRepresentation.swift */; };
+		DDD5E2CE23C4BD3B005CCD64 /* CustomerRatingRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD5E2CD23C4BD3B005CCD64 /* CustomerRatingRepresentation.swift */; };
+		DDD5E2D023C4BDBB005CCD64 /* ConsumerRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD5E2CF23C4BDBA005CCD64 /* ConsumerRepresentation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +62,11 @@
 		DDD5E2C023C3CF57005CCD64 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		DDD5E2C223C3DCA3005CCD64 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		DDD5E2C423C3DEE9005CCD64 /* LoginAndSignup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginAndSignup.storyboard; sourceTree = "<group>"; };
+		DDD5E2C723C4BC20005CCD64 /* TruckRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruckRepresentation.swift; sourceTree = "<group>"; };
+		DDD5E2C923C4BCAF005CCD64 /* LocationRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepresentation.swift; sourceTree = "<group>"; };
+		DDD5E2CB23C4BCD7005CCD64 /* VendorRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorRepresentation.swift; sourceTree = "<group>"; };
+		DDD5E2CD23C4BD3B005CCD64 /* CustomerRatingRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerRatingRepresentation.swift; sourceTree = "<group>"; };
+		DDD5E2CF23C4BDBA005CCD64 /* ConsumerRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerRepresentation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +118,8 @@
 		DDD5E28823C3CA33005CCD64 /* FoodTruckTracker */ = {
 			isa = PBXGroup;
 			children = (
+				DDD5E2D123C4BE06005CCD64 /* Convenience Files */,
+				DDD5E2C623C4BBFE005CCD64 /* Models */,
 				DDD5E2BC23C3CEF4005CCD64 /* Resources */,
 				DDD5E2BF23C3CF30005CCD64 /* View Controllers */,
 				DDD5E2BD23C3CF09005CCD64 /* Storyboards */,
@@ -170,6 +182,25 @@
 				DDD5E28D23C3CA33005CCD64 /* ViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		DDD5E2C623C4BBFE005CCD64 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DDD5E2C723C4BC20005CCD64 /* TruckRepresentation.swift */,
+				DDD5E2C923C4BCAF005CCD64 /* LocationRepresentation.swift */,
+				DDD5E2CB23C4BCD7005CCD64 /* VendorRepresentation.swift */,
+				DDD5E2CD23C4BD3B005CCD64 /* CustomerRatingRepresentation.swift */,
+				DDD5E2CF23C4BDBA005CCD64 /* ConsumerRepresentation.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DDD5E2D123C4BE06005CCD64 /* Convenience Files */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Convenience Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,10 +336,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDD5E2D023C4BDBB005CCD64 /* ConsumerRepresentation.swift in Sources */,
 				DDD5E2C323C3DCA3005CCD64 /* CoreDataStack.swift in Sources */,
 				DDD5E28E23C3CA33005CCD64 /* ViewController.swift in Sources */,
 				DDD5E28A23C3CA33005CCD64 /* AppDelegate.swift in Sources */,
+				DDD5E2CA23C4BCAF005CCD64 /* LocationRepresentation.swift in Sources */,
 				DDD5E29423C3CA33005CCD64 /* FoodTruckTracker.xcdatamodeld in Sources */,
+				DDD5E2CE23C4BD3B005CCD64 /* CustomerRatingRepresentation.swift in Sources */,
+				DDD5E2C823C4BC20005CCD64 /* TruckRepresentation.swift in Sources */,
+				DDD5E2CC23C4BCD7005CCD64 /* VendorRepresentation.swift in Sources */,
 				DDD5E28C23C3CA33005CCD64 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
