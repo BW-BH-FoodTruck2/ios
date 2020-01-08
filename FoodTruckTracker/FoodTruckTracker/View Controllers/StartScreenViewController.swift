@@ -19,11 +19,11 @@ class StartScreenViewController: UIViewController, UITableViewDataSource, UITabl
 		lazy var fetch: NSFetchedResultsController<Vendor> = {
 
 			let request: NSFetchRequest<Vendor> = Vendor.fetchRequest()
-			request.sortDescriptors = [NSSortDescriptor(key: //put in key, ascending: true)]
+			request.sortDescriptors = [NSSortDescriptor(key: "username", ascending: true)]
 
 			let frc = NSFetchedResultsController(fetchRequest: request,
 												 managedObjectContext: CoreDataStack.shared.mainContext,
-												 sectionNameKeyPath: //put in key,
+												 sectionNameKeyPath: "username",
 												 cacheName: nil)
 			frc.delegate = self
 			do {
@@ -68,7 +68,7 @@ class StartScreenViewController: UIViewController, UITableViewDataSource, UITabl
 
 		private func checkForBearerToken() {
 			if vendorController.token == nil {
-				performSegue(withIdentifier: //put in identifier, sender: self)
+				performSegue(withIdentifier: "LoginModalSegue", sender: self)
 			}
 		}
 
