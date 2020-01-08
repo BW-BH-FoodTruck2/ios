@@ -152,7 +152,7 @@
         <scene sceneID="Son-VA-9dQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1eA-bi-nKg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Trucks" id="ECz-Rh-MSX"/>
+                    <tabBarItem key="tabBarItem" title="Trucks" image="person" catalog="system" id="ECz-Rh-MSX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bRv-vB-vgL">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -168,4 +168,7 @@
             <point key="canvasLocation" x="328.98550724637681" y="-267.1875"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="person" catalog="system" width="64" height="58"/>
+    </resources>
 </document>
