@@ -16,23 +16,7 @@ class StartScreenViewController: UIViewController, UITableViewDataSource, UITabl
 
     let vendorController = VendorController()
 
-//		lazy var fetch: NSFetchedResultsController<Vendor> = {
-//
-//			let request: NSFetchRequest<Vendor> = Vendor.fetchRequest()
-////			request.sortDescriptors = [NSSortDescriptor(key: //put in key, ascending: true)]
-//
-////			let frc = NSFetchedResultsController(fetchRequest: request,
-////												 managedObjectContext: CoreDataStack.shared.mainContext,
-////												 sectionNameKeyPath: //put in key,
-////												 ,cacheName: nil)
-//			frc.delegate = self
-//			do {
-//				try frc.performFetch()
-//			} catch {
-//				fatalError("Error performing fetch for frc: \(error)")
-//			}
-//			return frc
-//		}()
+		lazy var fetch: NSFetchedResultsController<Vendor> = {
 
 			let request: NSFetchRequest<Vendor> = Vendor.fetchRequest()
 			request.sortDescriptors = [NSSortDescriptor(key: "username", ascending: true)]

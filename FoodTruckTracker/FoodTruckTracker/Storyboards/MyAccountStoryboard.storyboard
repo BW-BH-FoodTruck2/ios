@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--My Account View Controller-->
+        <!--Item-->
         <scene sceneID="N8r-tB-vsw">
             <objects>
                 <viewController id="n60-nf-dt8" customClass="MyAccountViewController" customModule="FoodTruckTracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -68,7 +68,7 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ao-Mu-p2j">
-                                <rect key="frame" x="0.0" y="415" width="414" height="447"/>
+                                <rect key="frame" x="0.0" y="415" width="414" height="398"/>
                                 <connections>
                                     <segue destination="hN8-WG-obz" kind="embed" identifier="EmbedStaticTableSegue" id="bdc-ap-l63"/>
                                 </connections>
@@ -89,6 +89,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LWq-F7-yoT"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="nbX-uv-DDb"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="usernameLabel" destination="9pc-Od-dlg" id="YMX-XA-65C"/>
                         <segue destination="AYY-JI-hUS" kind="show" identifier="ShowGenreSegue" id="IBT-Kc-wnU"/>
@@ -188,7 +190,7 @@
             <objects>
                 <tableViewController id="hN8-WG-obz" customClass="StaticTableViewController" customModule="FoodTruckTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OI6-CG-WHw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="447"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="398"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <sections>

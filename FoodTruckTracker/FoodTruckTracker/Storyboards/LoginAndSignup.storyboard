@@ -148,15 +148,15 @@
             </objects>
             <point key="canvasLocation" x="-113.04347826086958" y="37.5"/>
         </scene>
-        <!--MyAccountStoryboard-->
+        <!--StartScreen-->
         <scene sceneID="LPi-Q7-WGl">
             <objects>
-                <viewControllerPlaceholder storyboardName="MyAccountStoryboard" id="XXU-Rd-nIG" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="StartScreen" id="XXU-Rd-nIG" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="OjT-xs-gvz"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uHV-D8-3SQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1454" y="15"/>
+            <point key="canvasLocation" x="1323" y="38"/>
         </scene>
     </scenes>
 </document>
