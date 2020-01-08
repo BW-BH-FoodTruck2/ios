@@ -117,7 +117,11 @@
                         <viewLayoutGuide key="safeArea" id="Sgl-mH-tHV"/>
                     </view>
                     <navigationItem key="navigationItem" id="TdQ-XI-lAR">
-                        <barButtonItem key="rightBarButtonItem" title="Add Truck" id="51M-0E-wmN"/>
+                        <barButtonItem key="rightBarButtonItem" title="Add Truck" id="51M-0E-wmN">
+                            <connections>
+                                <segue destination="d5z-cf-Nre" kind="show" identifier="ShowAddTruckSegue" id="UBf-vC-16r"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addTruckBarButtonItem" destination="51M-0E-wmN" id="Oxz-jH-fZ5"/>
@@ -166,6 +170,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3e4-2f-UMJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="328.98550724637681" y="-267.1875"/>
+        </scene>
+        <!--AddTruck-->
+        <scene sceneID="3Rz-zY-IE7">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddTruck" id="d5z-cf-Nre" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Vg5-b5-kch"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hJi-Cs-XRz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1746" y="-337"/>
         </scene>
     </scenes>
 </document>
