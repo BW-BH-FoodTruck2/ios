@@ -66,6 +66,7 @@ struct VendorLogin: Codable {
     var username: String
     var password: String
     var role: Int
+    var bearer: Bearer?
 }
 
 struct VendorSignup: Codable {

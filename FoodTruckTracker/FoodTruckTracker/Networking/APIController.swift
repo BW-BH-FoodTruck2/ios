@@ -74,9 +74,9 @@ class APIController {
         }.resume()
     }
     
-    func login(with username: String, password: String, role: Role, completion: @escaping (ConsumerLogin?, VendorLogin?, Bearer?, Error?) -> ()) {
+    func login(with username: String, password: String, role: Role, completion: @escaping (ConsumerLogin?, VendorLogin?, Error?) -> ()) {
         guard let requestURL = baseURL?.appendingPathComponent("auth").appendingPathComponent("login") else {
-            completion(nil, nil, nil, NSError())
+            completion(nil, nil, NSError())
             return
         }
         var request = URLRequest(url: requestURL)
@@ -85,38 +85,38 @@ class APIController {
         let encoder = JSONEncoder()
         switch role {
         case .diner:
-            let consumer = ConsumerLogin(username: username, password: password, role: role.rawValue)
+            let consumer = ConsumerLogin(username: username, password: password, role: role.rawValue, bearer: nil)
             do {
                 let consumerData = try encoder.encode(consumer)
                 request.httpBody = consumerData
             } catch let encodeError {
-                completion(nil, nil, nil, encodeError)
+                completion(nil, nil, encodeError)
                 return
             }
         case .truckOperator:
-            let vendor = VendorLogin(username: username, password: password, role: role.rawValue)
+            let vendor = VendorLogin(username: username, password: password, role: role.rawValue, bearer: nil)
             do {
                 let vendorData = try encoder.encode(vendor)
                 request.httpBody = vendorData
             } catch let encodeError {
-                completion(nil, nil, nil, encodeError)
+                completion(nil, nil, encodeError)
                 return
             }
         }
         URLSession.shared.dataTask(with: request) { data, response, error in
             guard error == nil else {
-                completion(nil, nil, nil, error)
+                completion(nil, nil, error)
                 return
             }
             
             if let response = response as? HTTPURLResponse, response.statusCode != 200 {
-                completion(nil, nil, nil, NSError())
+                completion(nil, nil, NSError())
                 return
             }
             
             guard let data = data else {
                 DispatchQueue.main.async {
-                    completion(nil, nil, nil, NSError(domain: "", code: 500, userInfo: nil))
+                    completion(nil, nil, NSError(domain: "", code: 500, userInfo: nil))
                 }
                 return
             }
@@ -126,20 +126,20 @@ class APIController {
                 let bearer = try decoder.decode(Bearer.self, from: data)
                 switch role {
                 case .diner:
-                    let consumer = ConsumerLogin(username: username, password: password, role: role.rawValue)
+                    let consumer = ConsumerLogin(username: username, password: password, role: role.rawValue, bearer: bearer)
                     DispatchQueue.main.async {
-                        completion(consumer, nil, bearer, nil)
+                        completion(consumer, nil, nil)
                         return
                     }
                 case .truckOperator:
-                    let vendor = VendorLogin(username: username, password: password, role: role.rawValue)
+                    let vendor = VendorLogin(username: username, password: password, role: role.rawValue, bearer: bearer)
                     DispatchQueue.main.async {
-                        completion(nil, vendor, bearer, nil)
+                        completion(nil, vendor, nil)
                         return
                     }
                 }
             } catch let decodeError {
-                completion(nil, nil, nil, decodeError)
+                completion(nil, nil, decodeError)
                 return
             }
         }.resume()

@@ -1,5 +1,5 @@
 //
-//  Bearer.swift
+//  Constants.swift
 //  FoodTruckTracker
 //
 //  Created by Chad Rutherford on 1/7/20.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct Bearer: Codable {
-    var token: String
+struct Segues {
+    static let myAccountSegue = "MyAccountSegue"
 }

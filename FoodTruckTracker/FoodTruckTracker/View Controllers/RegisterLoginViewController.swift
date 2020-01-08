@@ -27,6 +27,13 @@ class RegisterLoginViewController: UIViewController {
     var registering: Bool = true
     var vendor: VendorLogin?
     var consumer: ConsumerLogin?
+    let activityIndicator: UIActivityIndicatorView = {
+        let aiv = UIActivityIndicatorView()
+        aiv.translatesAutoresizingMaskIntoConstraints = false
+        aiv.style = .large
+        aiv.hidesWhenStopped = true
+        return aiv
+    }()
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - View Controller Life Cycle
@@ -59,10 +66,31 @@ class RegisterLoginViewController: UIViewController {
         }
     }
     
-    private func showAlert(title: String, message: String) {
+    private func configureActivityIndicator() {
+        view.addSubview(activityIndicator)
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
+        ])
+    }
+    
+    private func showAlert(title: String, message: String, completion: @escaping () -> () = { }) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
+    }
+    
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case Segues.myAccountSegue:
+            guard let myAccountVC = segue.destination as? MyAccountViewController else { return }
+            myAccountVC.vendor = vendor
+            myAccountVC.consumer = consumer
+        default:
+            break
+        }
     }
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
@@ -72,6 +100,7 @@ class RegisterLoginViewController: UIViewController {
         updateViews()
     }
     @IBAction func submitButtonTapped(_ sender: UIButton) {
+        activityIndicator.startAnimating()
         switch registering {
         case true:
             guard let username = usernameTextField.text, !username.isEmpty,
@@ -83,9 +112,15 @@ class RegisterLoginViewController: UIViewController {
                 guard let self = self else { return }
                 if let error = error {
                     self.showAlert(title: "Error", message: error.localizedDescription)
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.removeFromSuperview()
                 }
                 
-                self.showAlert(title: "Sign Up Successful", message: "Please Log In")
+                self.showAlert(title: "Sign Up Successful", message: "Please Log In") {
+                    self.performSegue(withIdentifier: "MyAccountSegue", sender: self)
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.removeFromSuperview()
+                }
                 self.registering.toggle()
                 self.updateViews()
             }
@@ -93,11 +128,27 @@ class RegisterLoginViewController: UIViewController {
             guard let username = usernameTextField.text, !username.isEmpty,
                 let password = passwordTextField.text, !password.isEmpty,
                 let role = Role(rawValue: roleSegmentedControl.selectedSegmentIndex + 1) else { return }
-            apiController.login(with: username, password: password, role: role) { consumer, vendor, bearer, error in
+            apiController.login(with: username, password: password, role: role) { [weak self] consumer, vendor, error in
+                guard let self = self else { return }
                 if let error = error {
                     self.showAlert(title: "Error", message: error.localizedDescription)
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.removeFromSuperview()
                 }
-                self.showAlert(title: "Log In Successful", message: "")
+                
+                if let consumer = consumer {
+                    self.consumer = consumer
+                }
+                
+                if let vendor = vendor {
+                    self.vendor = vendor
+                }
+                
+                self.showAlert(title: "Log In Successful", message: "") {
+                    self.performSegue(withIdentifier: "MyAccountSegue", sender: self)
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.removeFromSuperview()
+                }
             }
         }
     }
