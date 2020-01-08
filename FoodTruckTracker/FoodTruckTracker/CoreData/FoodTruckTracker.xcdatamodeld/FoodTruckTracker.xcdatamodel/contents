@@ -1,47 +1,60 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="18G2022" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19D49f" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Consumer" representedClassName="Consumer" syncable="YES" codeGenerationType="class">
-        <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="identifier" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="password" optional="YES" attributeType="String"/>
-        <attribute name="username" optional="YES" attributeType="String"/>
+        <attribute name="location" optional="YES" attributeType="String"/>
+        <attribute name="password" attributeType="String"/>
+        <attribute name="role" attributeType="Integer 64" defaultValueString="1" usesScalarValueType="YES"/>
+        <attribute name="username" attributeType="String"/>
     </entity>
-    <entity name="CustomerRating" representedClassName="CustomerRating" syncable="YES" codeGenerationType="class">
-        <attribute name="comments" optional="YES" attributeType="String"/>
-        <attribute name="consumerRating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    <entity name="CurrentTruckLocation" representedClassName="CurrentTruckLocation" syncable="YES" codeGenerationType="class">
+        <attribute name="departureTime" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="location" attributeType="String"/>
+        <attribute name="truckID" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
-    <entity name="Location" representedClassName="Location" syncable="YES" codeGenerationType="class">
-        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+    <entity name="FavoriteTruck" representedClassName="FavoriteTruck" syncable="YES" codeGenerationType="class">
+        <attribute name="dinerID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="truckID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="MenuItem" representedClassName="MenuItem" syncable="YES" codeGenerationType="class">
-        <attribute name="customerAvgRating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="itemDescription" optional="YES" attributeType="String"/>
-        <attribute name="itemName" optional="YES" attributeType="String"/>
-        <attribute name="itemPrice" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="itemName" attributeType="String"/>
+        <attribute name="itemPrice" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
-    <entity name="MenuPhoto" representedClassName="MenuPhoto" syncable="YES" codeGenerationType="class">
-        <attribute name="photoURL" optional="YES" attributeType="String"/>
+    <entity name="MenuItemRating" representedClassName="MenuItemRating" syncable="YES" codeGenerationType="class">
+        <attribute name="menuItemID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="rating" attributeType="Integer 64" minValueString="1" maxValueString="5" defaultValueString="1" usesScalarValueType="YES"/>
     </entity>
     <entity name="Truck" representedClassName="Truck" syncable="YES" codeGenerationType="class">
-        <attribute name="customerAvgRating" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="identifier" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="imageOfTruck" optional="YES" attributeType="String"/>
-        <attribute name="truckName" optional="YES" attributeType="String"/>
+        <attribute name="cuisineType" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="imageURL" optional="YES" attributeType="String"/>
+        <attribute name="operatorID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="truckName" attributeType="String"/>
+    </entity>
+    <entity name="TruckMenuItem" representedClassName="TruckMenuItem" syncable="YES" codeGenerationType="class">
+        <attribute name="menuItemID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="truckID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="TruckRating" representedClassName="TruckRating" syncable="YES" codeGenerationType="class">
+        <attribute name="rating" attributeType="Integer 64" minValueString="1" maxValueString="5" defaultValueString="1" usesScalarValueType="YES"/>
+        <attribute name="truckID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Vendor" representedClassName="Vendor" syncable="YES" codeGenerationType="class">
-        <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="identifier" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="password" optional="YES" attributeType="String"/>
-        <attribute name="username" optional="YES" attributeType="String"/>
+        <attribute name="password" attributeType="String"/>
+        <attribute name="role" attributeType="Integer 64" defaultValueString="2" usesScalarValueType="YES"/>
+        <attribute name="username" attributeType="String"/>
     </entity>
     <elements>
+        <element name="Consumer" positionX="0" positionY="72" width="128" height="118"/>
+        <element name="CurrentTruckLocation" positionX="0" positionY="81" width="128" height="88"/>
+        <element name="Truck" positionX="-54" positionY="18" width="128" height="118"/>
         <element name="Vendor" positionX="-63" positionY="-18" width="128" height="103"/>
-        <element name="Truck" positionX="-54" positionY="18" width="128" height="103"/>
-        <element name="MenuPhoto" positionX="-36" positionY="45" width="128" height="58"/>
-        <element name="MenuItem" positionX="-18" positionY="54" width="128" height="103"/>
-        <element name="Location" positionX="0" positionY="81" width="128" height="73"/>
-        <element name="CustomerRating" positionX="18" positionY="90" width="128" height="73"/>
-        <element name="Consumer" positionX="0" positionY="72" width="128" height="103"/>
+        <element name="FavoriteTruck" positionX="-27" positionY="63" width="128" height="73"/>
+        <element name="TruckRating" positionX="-18" positionY="72" width="128" height="73"/>
+        <element name="MenuItem" positionX="-9" positionY="81" width="128" height="88"/>
+        <element name="TruckMenuItem" positionX="0" positionY="90" width="128" height="73"/>
+        <element name="MenuItemRating" positionX="9" positionY="99" width="128" height="73"/>
     </elements>
 </model>
