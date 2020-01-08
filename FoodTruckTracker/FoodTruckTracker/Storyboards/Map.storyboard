@@ -16,10 +16,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XPW-F5-lk8">
-                                <rect key="frame" x="0.0" y="144" width="414" height="718"/>
+                                <rect key="frame" x="0.0" y="144" width="414" height="669"/>
                             </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HlP-oA-wKz">
-                                <rect key="frame" x="0.0" y="144" width="414" height="718"/>
+                                <rect key="frame" x="0.0" y="144" width="414" height="669"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FoodTruckCell" rowHeight="100" id="pwz-HD-u4r" customClass="FoodTruckTableViewCell" customModule="FoodTruckTracker" customModuleProvider="target">
@@ -116,6 +116,7 @@
                         <viewLayoutGuide key="safeArea" id="CKw-MR-n8I"/>
                     </view>
                     <navigationItem key="navigationItem" title="Find Food Trucks" id="WT7-TR-wAW"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="foodTruckSearchBar" destination="3td-hx-bQS" id="Ipk-gC-iwF"/>
                         <outlet property="searchResultsTableView" destination="HlP-oA-wKz" id="dsy-0G-LRU"/>
@@ -125,11 +126,13 @@
             </objects>
             <point key="canvasLocation" x="894.20289855072474" y="190.84821428571428"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Item-->
         <scene sceneID="ot2-87-nMo">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RSt-t3-3j6" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Eia-60-K0i"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QEr-G2-wGr">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

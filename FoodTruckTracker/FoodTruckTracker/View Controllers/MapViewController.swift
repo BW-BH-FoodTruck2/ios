@@ -45,14 +45,14 @@ class MapViewController: UIViewController {
 		override func viewDidAppear(_ animated: Bool) {
 			super.viewDidAppear(animated)
 
-			checkForBearerToken()
+//			checkForBearerToken()
 		}
 
-		private func checkForBearerToken() {
-			if vendorController.token == nil && consumerController.token == nil {
-				performSegue(withIdentifier: "ModalLoginSegue", sender: self)
-			}
-		}
+//		private func checkForBearerToken() {
+//			if vendorController.token == nil && consumerController.token == nil {
+//				performSegue(withIdentifier: "ModalLoginSegue", sender: self)
+//			}
+//		}
 
 		private func setupTableView() { // Set up table view constaints and make it hidden
 			searchResultsTableView.delegate = self
