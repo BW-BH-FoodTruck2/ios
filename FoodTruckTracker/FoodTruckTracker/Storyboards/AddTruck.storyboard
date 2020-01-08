@@ -7,42 +7,136 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Add Truck View Controller-->
         <scene sceneID="iUN-yQ-K8h">
             <objects>
-                <viewController id="Ri8-Hh-G7S" sceneMemberID="viewController">
+                <viewController id="Ri8-Hh-G7S" customClass="AddTruckViewController" customModule="FoodTruckTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gZj-yE-51B">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="wEN-ug-TbP">
-                                <rect key="frame" x="63" y="127" width="383.5" height="34"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="VCX-1E-esT">
+                                <rect key="frame" x="20" y="88" width="383.5" height="86"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Truck's Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jon-q5-5z9">
-                                        <rect key="frame" x="0.0" y="0.0" width="109.5" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3vI-Yg-kgZ">
-                                        <rect key="frame" x="133.5" y="0.0" width="250" height="34"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="250" id="HSf-aN-F7i"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="wEN-ug-TbP">
+                                        <rect key="frame" x="0.0" y="0.0" width="383.5" height="34"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Truck's Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jon-q5-5z9">
+                                                <rect key="frame" x="0.0" y="0.0" width="109.5" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3vI-Yg-kgZ">
+                                                <rect key="frame" x="133.5" y="0.0" width="250" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="250" id="HSf-aN-F7i"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="qld-0p-0hl">
+                                        <rect key="frame" x="0.0" y="52" width="383.5" height="34"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U1C-Yw-Ksg">
+                                                <rect key="frame" x="0.0" y="0.0" width="120" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="120" id="fuw-ts-Av5"/>
+                                                </constraints>
+                                                <state key="normal" title="Choose Cuisine:"/>
+                                                <connections>
+                                                    <segue destination="vGq-oo-IYz" kind="popoverPresentation" popoverAnchorView="U1C-Yw-Ksg" id="5xP-nj-XnR">
+                                                        <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
+                                                    </segue>
+                                                </connections>
+                                            </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nEb-NM-9zE">
+                                                <rect key="frame" x="144" y="0.0" width="239.5" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="250" id="rI5-gK-3ZK"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="U1C-Yw-Ksg" firstAttribute="leading" secondItem="jon-q5-5z9" secondAttribute="leading" id="Uqy-nb-nag"/>
+                                </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="311-Ax-PoL">
+                                <rect key="frame" x="20" y="194" width="72" height="30"/>
+                                <state key="normal" title="Add Photo"/>
+                                <connections>
+                                    <action selector="addPhotoButton:" destination="Ri8-Hh-G7S" eventType="touchUpInside" id="A40-us-UkV"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DOH-yS-QCU">
+                                <rect key="frame" x="40" y="244" width="343.5" height="343.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="DOH-yS-QCU" secondAttribute="height" multiplier="1:1" id="VeU-5N-vYU"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="VCX-1E-esT" firstAttribute="top" secondItem="AXT-I4-nW7" secondAttribute="top" id="4Ik-OY-cqC"/>
+                            <constraint firstItem="311-Ax-PoL" firstAttribute="top" secondItem="VCX-1E-esT" secondAttribute="bottom" constant="20" id="9Zk-lc-Imh"/>
+                            <constraint firstItem="VCX-1E-esT" firstAttribute="leading" secondItem="AXT-I4-nW7" secondAttribute="leading" constant="20" id="M9o-25-Wwj"/>
+                            <constraint firstItem="VCX-1E-esT" firstAttribute="trailing" secondItem="AXT-I4-nW7" secondAttribute="trailing" constant="-20" id="aC2-ap-q3P"/>
+                            <constraint firstItem="311-Ax-PoL" firstAttribute="leading" secondItem="U1C-Yw-Ksg" secondAttribute="leading" id="iAi-ks-dkJ"/>
+                            <constraint firstItem="DOH-yS-QCU" firstAttribute="top" secondItem="311-Ax-PoL" secondAttribute="bottom" constant="20" id="icQ-h5-gXU"/>
+                            <constraint firstItem="AXT-I4-nW7" firstAttribute="trailing" secondItem="DOH-yS-QCU" secondAttribute="trailing" constant="40" id="wea-XI-SWV"/>
+                            <constraint firstItem="DOH-yS-QCU" firstAttribute="leading" secondItem="AXT-I4-nW7" secondAttribute="leading" constant="40" id="yX1-eI-C9E"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="AXT-I4-nW7"/>
                     </view>
-                    <navigationItem key="navigationItem" id="f4A-Wj-qvN"/>
+                    <navigationItem key="navigationItem" id="f4A-Wj-qvN">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="QvV-2Y-CjU">
+                            <connections>
+                                <action selector="addTruckButton:" destination="Ri8-Hh-G7S" id="pMQ-5i-iUk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cuisineTypeTextField" destination="nEb-NM-9zE" id="ryL-2w-6Op"/>
+                        <outlet property="truckImageView" destination="DOH-yS-QCU" id="Tx1-p2-AYp"/>
+                        <outlet property="truckNameTextField" destination="3vI-Yg-kgZ" id="9kh-CZ-aIW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kbg-8A-GE2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="859" y="147"/>
+        </scene>
+        <!--Cuisine Picker View Controller-->
+        <scene sceneID="Kbi-RD-IYn">
+            <objects>
+                <viewController id="vGq-oo-IYz" customClass="CuisinePickerViewController" customModule="FoodTruckTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="A0F-FZ-L1s">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="286"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dEx-lp-uQE">
+                                <rect key="frame" x="0.0" y="44" width="414" height="242"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="dEx-lp-uQE" firstAttribute="leading" secondItem="ste-Gh-cwe" secondAttribute="leading" id="F0s-J5-r7t"/>
+                            <constraint firstItem="ste-Gh-cwe" firstAttribute="trailing" secondItem="dEx-lp-uQE" secondAttribute="trailing" id="UIz-ZF-CWw"/>
+                            <constraint firstItem="ste-Gh-cwe" firstAttribute="bottom" secondItem="dEx-lp-uQE" secondAttribute="bottom" id="VSy-Qe-F6A"/>
+                            <constraint firstItem="dEx-lp-uQE" firstAttribute="top" secondItem="ste-Gh-cwe" secondAttribute="top" id="eb7-bW-mMU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ste-Gh-cwe"/>
+                    </view>
+                    <size key="freeformSize" width="414" height="286"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g1J-kI-1Nk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1760.8695652173915" y="141.96428571428569"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GRA-nL-0wR">

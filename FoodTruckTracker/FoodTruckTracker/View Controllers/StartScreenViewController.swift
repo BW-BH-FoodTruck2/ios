@@ -34,6 +34,22 @@ class StartScreenViewController: UIViewController, UITableViewDataSource, UITabl
 //			return frc
 //		}()
 
+			let request: NSFetchRequest<Vendor> = Vendor.fetchRequest()
+			request.sortDescriptors = [NSSortDescriptor(key: "username", ascending: true)]
+
+			let frc = NSFetchedResultsController(fetchRequest: request,
+												 managedObjectContext: CoreDataStack.shared.mainContext,
+												 sectionNameKeyPath: "username",
+												 cacheName: nil)
+			frc.delegate = self
+			do {
+				try frc.performFetch()
+			} catch {
+				fatalError("Error performing fetch for frc: \(error)")
+			}
+			return frc
+		}()
+
 		override func viewDidLoad() {
 			super.viewDidLoad()
 
@@ -66,11 +82,11 @@ class StartScreenViewController: UIViewController, UITableViewDataSource, UITabl
 
 		// MARK: - Table view data source
 
-//		private func checkForBearerToken() {
-//			if vendorController.token == nil {
-//				performSegue(withIdentifier: //put in identifier, sender: self)
-//			}
-//		}
+		private func checkForBearerToken() {
+			if vendorController.token == nil {
+				performSegue(withIdentifier: "LoginModalSegue", sender: self)
+			}
+		}
 
 		func numberOfSections(in tableView: UITableView) -> Int {
 
