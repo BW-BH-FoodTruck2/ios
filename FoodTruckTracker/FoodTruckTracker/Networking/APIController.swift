@@ -24,7 +24,7 @@ let baseURL = URL(string: "https://food-truck-trackr.herokuapp.com/api")
 
 class APIController {
     
-    func register(with username: String, password: String, email: String, role: Role, location: String? = "", completion: @escaping (Error?) -> ()) {
+    func register(with username: String, password: String, role: Role, location: String? = "", completion: @escaping (Error?) -> ()) {
         guard let requestURL = baseURL?.appendingPathComponent("auth").appendingPathComponent("register") else {
             completion(NSError())
             return
@@ -141,6 +141,52 @@ class APIController {
             } catch let decodeError {
                 completion(nil, nil, decodeError)
                 return
+            }
+        }.resume()
+    }
+    
+    func fetchAllTrucks(bearer: Bearer, completion: @escaping ([TruckRepresentation]?, Error?) -> ()) {
+        guard let requestURL = baseURL?.appendingPathComponent("trucks") else {
+            completion(nil, NSError())
+            return
+        }
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.get.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(bearer.token, forHTTPHeaderField: "authorization")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse, response.statusCode != 200 {
+                DispatchQueue.main.async {
+                    completion(nil, NSError())
+                }
+            }
+            
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(nil, NSError())
+                }
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            do {
+                let trucksData = try decoder.decode([TruckRepresentation].self, from: data)
+                DispatchQueue.main.async {
+                    completion(trucksData, nil)
+                }
+            } catch let decodeError {
+                DispatchQueue.main.async {
+                    completion(nil, decodeError)
+                    return
+                }
             }
         }.resume()
     }

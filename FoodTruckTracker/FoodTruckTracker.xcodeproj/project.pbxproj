@@ -9,16 +9,24 @@
 /* Begin PBXBuildFile section */
 		6303240523C4CBBA0041566D /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303240423C4CBBA0041566D /* APIController.swift */; };
 		6303240723C4D4840041566D /* Bearer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303240623C4D4840041566D /* Bearer.swift */; };
+		63187D7523C5287F00871F74 /* MyAccountStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63187D7423C5287F00871F74 /* MyAccountStoryboard.storyboard */; };
+		63187D7723C52C6400871F74 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63187D7623C52C6400871F74 /* MyAccountViewController.swift */; };
+		63187D7A23C52D9400871F74 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63187D7923C52D9400871F74 /* Constants.swift */; };
+		633524FE23C633590088B8C9 /* CurrentTruckLocationRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633524FD23C633590088B8C9 /* CurrentTruckLocationRepresentation.swift */; };
+		6335250023C633E90088B8C9 /* FavoriteTruckRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633524FF23C633E90088B8C9 /* FavoriteTruckRepresentation.swift */; };
+		6335250223C634420088B8C9 /* TruckRatingRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6335250123C634420088B8C9 /* TruckRatingRepresentation.swift */; };
+		6335250423C6350F0088B8C9 /* MeunItemRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6335250323C6350F0088B8C9 /* MeunItemRepresentation.swift */; };
+		6335250523C64DF80088B8C9 /* RegisterLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD5E28D23C3CA33005CCD64 /* RegisterLoginViewController.swift */; };
+		6335250723C656740088B8C9 /* SearchByGenreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6335250623C656740088B8C9 /* SearchByGenreViewController.swift */; };
+		6335250923C65D480088B8C9 /* GenreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6335250823C65D480088B8C9 /* GenreTableViewCell.swift */; };
+		63A3574A23C6666C00EBD0ED /* StaticTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A3574923C6666C00EBD0ED /* StaticTableViewController.swift */; };
+		63A3574C23C6715900EBD0ED /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A3574B23C6715900EBD0ED /* SplashScreenViewController.swift */; };
 		DD51D2D023C54F2F0009C91E /* FoodTruckTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD5E2DE23C51A80005CCD64 /* FoodTruckTableViewCell.swift */; };
 		DD96B22423C623090080A110 /* StartScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD96B22623C623090080A110 /* StartScreen.storyboard */; };
 		DD96B22823C628C30080A110 /* StartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD96B22723C628C30080A110 /* StartScreenViewController.swift */; };
 		DD96B22A23C62B430080A110 /* AddTruck.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD96B22923C62B430080A110 /* AddTruck.storyboard */; };
-		63187D7523C5287F00871F74 /* MyAccountStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63187D7423C5287F00871F74 /* MyAccountStoryboard.storyboard */; };
-		63187D7723C52C6400871F74 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63187D7623C52C6400871F74 /* MyAccountViewController.swift */; };
-		63187D7A23C52D9400871F74 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63187D7923C52D9400871F74 /* Constants.swift */; };
 		DDD5E28A23C3CA33005CCD64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD5E28923C3CA33005CCD64 /* AppDelegate.swift */; };
 		DDD5E28C23C3CA33005CCD64 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD5E28B23C3CA33005CCD64 /* SceneDelegate.swift */; };
-		DDD5E28E23C3CA33005CCD64 /* RegisterLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD5E28D23C3CA33005CCD64 /* RegisterLoginViewController.swift */; };
 		DDD5E29123C3CA33005CCD64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDD5E28F23C3CA33005CCD64 /* Main.storyboard */; };
 		DDD5E29423C3CA33005CCD64 /* FoodTruckTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DDD5E29223C3CA33005CCD64 /* FoodTruckTracker.xcdatamodeld */; };
 		DDD5E29623C3CA37005CCD64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDD5E29523C3CA37005CCD64 /* Assets.xcassets */; };
@@ -29,9 +37,7 @@
 		DDD5E2C323C3DCA3005CCD64 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD5E2C223C3DCA3005CCD64 /* CoreDataStack.swift */; };
 		DDD5E2C523C3DEE9005CCD64 /* LoginAndSignup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDD5E2C423C3DEE9005CCD64 /* LoginAndSignup.storyboard */; };
 		DDD5E2C823C4BC20005CCD64 /* TruckRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD5E2C723C4BC20005CCD64 /* TruckRepresentation.swift */; };
-		DDD5E2CA23C4BCAF005CCD64 /* LocationRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD5E2C923C4BCAF005CCD64 /* LocationRepresentation.swift */; };
 		DDD5E2CC23C4BCD7005CCD64 /* VendorRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD5E2CB23C4BCD7005CCD64 /* VendorRepresentation.swift */; };
-		DDD5E2CE23C4BD3B005CCD64 /* CustomerRatingRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD5E2CD23C4BD3B005CCD64 /* CustomerRatingRepresentation.swift */; };
 		DDD5E2D023C4BDBB005CCD64 /* ConsumerRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD5E2CF23C4BDBA005CCD64 /* ConsumerRepresentation.swift */; };
 		DDD5E2D323C4F103005CCD64 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDD5E2D223C4F103005CCD64 /* Map.storyboard */; };
 		DDD5E2D523C50E5E005CCD64 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD5E2D423C50E5E005CCD64 /* MapViewController.swift */; };
@@ -60,12 +66,20 @@
 /* Begin PBXFileReference section */
 		6303240423C4CBBA0041566D /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		6303240623C4D4840041566D /* Bearer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bearer.swift; sourceTree = "<group>"; };
-		DD96B22523C623090080A110 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/StartScreen.storyboard; sourceTree = "<group>"; };
-		DD96B22723C628C30080A110 /* StartScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenViewController.swift; sourceTree = "<group>"; };
-		DD96B22923C62B430080A110 /* AddTruck.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddTruck.storyboard; sourceTree = "<group>"; };
 		63187D7423C5287F00871F74 /* MyAccountStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyAccountStoryboard.storyboard; sourceTree = "<group>"; };
 		63187D7623C52C6400871F74 /* MyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
 		63187D7923C52D9400871F74 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		633524FD23C633590088B8C9 /* CurrentTruckLocationRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTruckLocationRepresentation.swift; sourceTree = "<group>"; };
+		633524FF23C633E90088B8C9 /* FavoriteTruckRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTruckRepresentation.swift; sourceTree = "<group>"; };
+		6335250123C634420088B8C9 /* TruckRatingRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruckRatingRepresentation.swift; sourceTree = "<group>"; };
+		6335250323C6350F0088B8C9 /* MeunItemRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeunItemRepresentation.swift; sourceTree = "<group>"; };
+		6335250623C656740088B8C9 /* SearchByGenreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchByGenreViewController.swift; sourceTree = "<group>"; };
+		6335250823C65D480088B8C9 /* GenreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreTableViewCell.swift; sourceTree = "<group>"; };
+		63A3574923C6666C00EBD0ED /* StaticTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticTableViewController.swift; sourceTree = "<group>"; };
+		63A3574B23C6715900EBD0ED /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
+		DD96B22523C623090080A110 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/StartScreen.storyboard; sourceTree = "<group>"; };
+		DD96B22723C628C30080A110 /* StartScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenViewController.swift; sourceTree = "<group>"; };
+		DD96B22923C62B430080A110 /* AddTruck.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddTruck.storyboard; sourceTree = "<group>"; };
 		DDD5E28623C3CA33005CCD64 /* FoodTruckTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodTruckTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDD5E28923C3CA33005CCD64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDD5E28B23C3CA33005CCD64 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,9 +99,7 @@
 		DDD5E2C223C3DCA3005CCD64 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		DDD5E2C423C3DEE9005CCD64 /* LoginAndSignup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginAndSignup.storyboard; sourceTree = "<group>"; };
 		DDD5E2C723C4BC20005CCD64 /* TruckRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruckRepresentation.swift; sourceTree = "<group>"; };
-		DDD5E2C923C4BCAF005CCD64 /* LocationRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepresentation.swift; sourceTree = "<group>"; };
 		DDD5E2CB23C4BCD7005CCD64 /* VendorRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorRepresentation.swift; sourceTree = "<group>"; };
-		DDD5E2CD23C4BD3B005CCD64 /* CustomerRatingRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerRatingRepresentation.swift; sourceTree = "<group>"; };
 		DDD5E2CF23C4BDBA005CCD64 /* ConsumerRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerRepresentation.swift; sourceTree = "<group>"; };
 		DDD5E2D223C4F103005CCD64 /* Map.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		DDD5E2D423C50E5E005CCD64 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +247,9 @@
 				DDD5E2D423C50E5E005CCD64 /* MapViewController.swift */,
 				DD96B22723C628C30080A110 /* StartScreenViewController.swift */,
 				63187D7623C52C6400871F74 /* MyAccountViewController.swift */,
+				6335250623C656740088B8C9 /* SearchByGenreViewController.swift */,
+				63A3574923C6666C00EBD0ED /* StaticTableViewController.swift */,
+				63A3574B23C6715900EBD0ED /* SplashScreenViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -243,11 +258,13 @@
 			isa = PBXGroup;
 			children = (
 				DDD5E2C723C4BC20005CCD64 /* TruckRepresentation.swift */,
-				DDD5E2C923C4BCAF005CCD64 /* LocationRepresentation.swift */,
 				DDD5E2CB23C4BCD7005CCD64 /* VendorRepresentation.swift */,
-				DDD5E2CD23C4BD3B005CCD64 /* CustomerRatingRepresentation.swift */,
 				DDD5E2CF23C4BDBA005CCD64 /* ConsumerRepresentation.swift */,
 				6303240623C4D4840041566D /* Bearer.swift */,
+				633524FD23C633590088B8C9 /* CurrentTruckLocationRepresentation.swift */,
+				633524FF23C633E90088B8C9 /* FavoriteTruckRepresentation.swift */,
+				6335250123C634420088B8C9 /* TruckRatingRepresentation.swift */,
+				6335250323C6350F0088B8C9 /* MeunItemRepresentation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -273,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				DDD5E2DE23C51A80005CCD64 /* FoodTruckTableViewCell.swift */,
+				6335250823C65D480088B8C9 /* GenreTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -414,6 +432,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6335250523C64DF80088B8C9 /* RegisterLoginViewController.swift in Sources */,
+				6335250723C656740088B8C9 /* SearchByGenreViewController.swift in Sources */,
+				6335250023C633E90088B8C9 /* FavoriteTruckRepresentation.swift in Sources */,
 				6303240523C4CBBA0041566D /* APIController.swift in Sources */,
 				DDD5E2DA23C51515005CCD64 /* ConsumerController.swift in Sources */,
 				DDD5E2D823C51342005CCD64 /* VendorController.swift in Sources */,
@@ -421,20 +442,22 @@
 				DDD5E2D023C4BDBB005CCD64 /* ConsumerRepresentation.swift in Sources */,
 				DDD5E2C323C3DCA3005CCD64 /* CoreDataStack.swift in Sources */,
 				DD51D2D023C54F2F0009C91E /* FoodTruckTableViewCell.swift in Sources */,
-				DDD5E28E23C3CA33005CCD64 /* RegisterLoginViewController.swift in Sources */,
-				DDD5E28E23C3CA33005CCD64 /* RegisterLoginViewController.swift in Sources */,
 				DDD5E28A23C3CA33005CCD64 /* AppDelegate.swift in Sources */,
-				DDD5E2CA23C4BCAF005CCD64 /* LocationRepresentation.swift in Sources */,
+				6335250223C634420088B8C9 /* TruckRatingRepresentation.swift in Sources */,
+				633524FE23C633590088B8C9 /* CurrentTruckLocationRepresentation.swift in Sources */,
 				DDD5E2D523C50E5E005CCD64 /* MapViewController.swift in Sources */,
 				DDD5E29423C3CA33005CCD64 /* FoodTruckTracker.xcdatamodeld in Sources */,
-				DDD5E2CE23C4BD3B005CCD64 /* CustomerRatingRepresentation.swift in Sources */,
 				6303240723C4D4840041566D /* Bearer.swift in Sources */,
 				DDD5E2C823C4BC20005CCD64 /* TruckRepresentation.swift in Sources */,
+				6335250423C6350F0088B8C9 /* MeunItemRepresentation.swift in Sources */,
+				63A3574A23C6666C00EBD0ED /* StaticTableViewController.swift in Sources */,
+				63A3574C23C6715900EBD0ED /* SplashScreenViewController.swift in Sources */,
 				DDD5E2DC23C5162B005CCD64 /* TruckController.swift in Sources */,
 				DDD5E2CC23C4BCD7005CCD64 /* VendorRepresentation.swift in Sources */,
 				63187D7723C52C6400871F74 /* MyAccountViewController.swift in Sources */,
 				DDD5E28C23C3CA33005CCD64 /* SceneDelegate.swift in Sources */,
 				63187D7A23C52D9400871F74 /* Constants.swift in Sources */,
+				6335250923C65D480088B8C9 /* GenreTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

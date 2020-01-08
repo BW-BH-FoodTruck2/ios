@@ -240,18 +240,18 @@ class MapViewController: UIViewController {
 
 			let truck = searchResult[indexPath.row]
 			cell.truck = truck
-			getAddress(CLLocation(latitude: truck.location.latitude, longitude: truck.location.longitute)) { placemark in
-				if let placemark = placemark {
-					cell.address = placemark.locality // This may just show the city? There wasn't adiquate documentation
-				}
-			}
+//			getAddress(CLLocation(latitude: truck.location.latitude, longitude: truck.location.longitute)) { placemark in
+//				if let placemark = placemark {
+//					cell.address = placemark.locality // This may just show the city? There wasn't adiquate documentation
+//				}
+//			}
 
-			if let userLocation = userLocation {
-				let location = CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude)
-				let destination = CLLocation(latitude: truck.location.latitude, longitude: truck.location.longitute)
-				let distance: CLLocationDistance = location.distance(from: destination)
-				cell.distanceAway = Double(distance) / 1609.344
-			}
+//			if let userLocation = userLocation {
+//				let location = CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude)
+//				let destination = CLLocation(latitude: truck.location.latitude, longitude: truck.location.longitute)
+//				let distance: CLLocationDistance = location.distance(from: destination)
+//				cell.distanceAway = Double(distance) / 1609.344
+//			}
 			return cell
 		}
 	}
