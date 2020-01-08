@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--My Account View Controller-->
         <scene sceneID="N8r-tB-vsw">
             <objects>
-                <viewController id="n60-nf-dt8" sceneMemberID="viewController">
+                <viewController id="n60-nf-dt8" customClass="MyAccountViewController" customModule="FoodTruckTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uPg-YQ-p6w">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -70,7 +70,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ao-Mu-p2j">
                                 <rect key="frame" x="0.0" y="415" width="414" height="447"/>
                                 <connections>
-                                    <segue destination="hN8-WG-obz" kind="embed" id="bdc-ap-l63"/>
+                                    <segue destination="hN8-WG-obz" kind="embed" identifier="EmbedStaticTableSegue" id="bdc-ap-l63"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -90,17 +90,18 @@
                         <viewLayoutGuide key="safeArea" id="LWq-F7-yoT"/>
                     </view>
                     <connections>
-                        <segue destination="AYY-JI-hUS" kind="show" id="reS-gl-HoN"/>
+                        <outlet property="usernameLabel" destination="9pc-Od-dlg" id="YMX-XA-65C"/>
+                        <segue destination="AYY-JI-hUS" kind="show" identifier="ShowGenreSegue" id="IBT-Kc-wnU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V0V-1u-Ew1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="60.869565217391312" y="156.69642857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Search By Genre View Controller-->
         <scene sceneID="Jtw-hc-Lsa">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="AYY-JI-hUS" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="AYY-JI-hUS" customClass="SearchByGenreViewController" customModule="FoodTruckTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zdD-YX-YES">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,7 +110,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="765"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="FCb-rb-EGC">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GenreCell" rowHeight="60" id="FCb-rb-EGC" customClass="GenreTableViewCell" customModule="FoodTruckTracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FCb-rb-EGC" id="PC6-yq-k9K">
@@ -139,6 +140,10 @@
                                                 <constraint firstItem="vtQ-Vq-YM1" firstAttribute="centerY" secondItem="PC6-yq-k9K" secondAttribute="centerY" id="tK7-lr-EAD"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="checkboxImageView" destination="0pI-xi-gmV" id="4nR-3B-IuF"/>
+                                            <outlet property="genreTitleLabel" destination="vtQ-Vq-YM1" id="T4h-3l-q7e"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -153,6 +158,9 @@
                                 <state key="normal" title="SEARCH">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="searchButtonTapped:" destination="AYY-JI-hUS" eventType="touchUpInside" id="0cy-Tl-d8S"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -167,15 +175,18 @@
                         <viewLayoutGuide key="safeArea" id="vKe-F8-uDr"/>
                     </view>
                     <navigationItem key="navigationItem" id="LE6-tw-bKZ"/>
+                    <connections>
+                        <outlet property="tableView" destination="fUA-3Q-jhE" id="vuA-i8-02s"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tTp-PH-g0S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="769.56521739130437" y="156.69642857142856"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Static Table View Controller-->
         <scene sceneID="pVr-QO-DcK">
             <objects>
-                <tableViewController id="hN8-WG-obz" sceneMemberID="viewController">
+                <tableViewController id="hN8-WG-obz" customClass="StaticTableViewController" customModule="FoodTruckTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OI6-CG-WHw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="447"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -16,7 +16,6 @@ class RegisterLoginViewController: UIViewController {
     @IBOutlet weak var titleMessageLabel: UILabel!
     @IBOutlet weak var roleSegmentedControl: UISegmentedControl!
     @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signupLoginLabel: UILabel!
     @IBOutlet weak var signupLoginButton: UIButton!
@@ -40,7 +39,6 @@ class RegisterLoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         usernameTextField.delegate = self
-        emailTextField.delegate = self
         passwordTextField.delegate = self
         updateViews()
     }
@@ -55,13 +53,11 @@ class RegisterLoginViewController: UIViewController {
             signupLoginLabel.text = "Already a user?"
             signupLoginButton.setTitle("    LOG IN", for: .normal)
             submitButton.setTitle("SIGN UP", for: .normal)
-            emailTextField.isHidden = false
         case false:
             titleLabel.text = "Log In"
             titleMessageLabel.text = "Enter your username and password. Your privacy is important to us and will not be shared."
             signupLoginLabel.text = "No Account?"
             signupLoginButton.setTitle("    SIGN UP", for: .normal)
-            emailTextField.isHidden = true
             submitButton.setTitle("LOG IN", for: .normal)
         }
     }
@@ -76,7 +72,9 @@ class RegisterLoginViewController: UIViewController {
     
     private func showAlert(title: String, message: String, completion: @escaping () -> () = { }) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+            completion()
+        })
         present(alert, animated: true)
     }
     
@@ -104,11 +102,9 @@ class RegisterLoginViewController: UIViewController {
         switch registering {
         case true:
             guard let username = usernameTextField.text, !username.isEmpty,
-                let email = emailTextField.text, !email.isEmpty,
                 let password = passwordTextField.text, !password.isEmpty,
                 let role = Role(rawValue: roleSegmentedControl.selectedSegmentIndex + 1) else { return }
-            print("Username: \(username), Email: \(email), Password: \(password), Role: \(role)")
-            apiController.register(with: username, password: password, email: email, role: role) { [weak self] error in
+            apiController.register(with: username, password: password, role: role) { [weak self] error in
                 guard let self = self else { return }
                 if let error = error {
                     self.showAlert(title: "Error", message: error.localizedDescription)

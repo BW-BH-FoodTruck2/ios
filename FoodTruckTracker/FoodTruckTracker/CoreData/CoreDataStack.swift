@@ -18,7 +18,7 @@ class CoreDataStack {
 		let container = NSPersistentContainer(name: "FoodTruck" as String)
 		container.loadPersistentStores { _, error in
 			if let error = error as NSError? {
-				fatalError("Unresolved error \(error), \(error.userInfo)")
+                fatalError("Failed to load persistent stores: \(error.localizedDescription)")
 			}
 		}
 		container.viewContext.automaticallyMergesChangesFromParent = true

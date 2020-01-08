@@ -16,7 +16,23 @@ class StartScreenViewController: UIViewController, UITableViewDataSource, UITabl
 
     let vendorController = VendorController()
 
-		lazy var fetch: NSFetchedResultsController<Vendor> = {
+//		lazy var fetch: NSFetchedResultsController<Vendor> = {
+//
+//			let request: NSFetchRequest<Vendor> = Vendor.fetchRequest()
+////			request.sortDescriptors = [NSSortDescriptor(key: //put in key, ascending: true)]
+//
+////			let frc = NSFetchedResultsController(fetchRequest: request,
+////												 managedObjectContext: CoreDataStack.shared.mainContext,
+////												 sectionNameKeyPath: //put in key,
+////												 ,cacheName: nil)
+//			frc.delegate = self
+//			do {
+//				try frc.performFetch()
+//			} catch {
+//				fatalError("Error performing fetch for frc: \(error)")
+//			}
+//			return frc
+//		}()
 
 			let request: NSFetchRequest<Vendor> = Vendor.fetchRequest()
 			request.sortDescriptors = [NSSortDescriptor(key: "username", ascending: true)]
@@ -74,12 +90,14 @@ class StartScreenViewController: UIViewController, UITableViewDataSource, UITabl
 
 		func numberOfSections(in tableView: UITableView) -> Int {
 
-			return fetch.sections?.count ?? 1
+//			return fetch.sections?.count ?? 1
+            return 1
 		}
 
 		func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-			return fetch.sections?[section].numberOfObjects ?? 0
+//			return fetch.sections?[section].numberOfObjects ?? 0
+            return 1
 		}
 
 		func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

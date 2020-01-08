@@ -9,22 +9,17 @@
 import Foundation
 
 struct TruckRepresentation: Codable {
-    var location: LocationRepresentation
-    var imageOfTruck: String
-    var customerAvgRating: Double
-	var truckName: String
-    var identifier: UUID
+    
+    var id: Int?
+    var truckName: String
+    var cuisineType: String
+    var operatorID: Int
+    var imageURL: String?
 
-	init(location: LocationRepresentation = LocationRepresentation(longitute: 0.0, latitude: 0.0),
-         imageOfTruck: String = "",
-         customerAvgRating: Double = 0.0,
-         truckName: String = "",
-         identifier: UUID = UUID()) {
-
-		self.location = location
-		self.imageOfTruck = imageOfTruck
-		self.customerAvgRating = customerAvgRating
-		self.truckName = truckName
-		self.identifier = identifier
+    init(truckName: String, cuisineType: String, operatorID: Int, imageURL: String?) {
+        self.truckName = truckName
+        self.cuisineType = cuisineType
+        self.operatorID = operatorID
+        self.imageURL = imageURL
 	}
 }

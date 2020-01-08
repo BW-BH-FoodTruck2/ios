@@ -10,4 +10,11 @@ import Foundation
 
 struct Segues {
     static let myAccountSegue = "MyAccountSegue"
+    static let showGenreSegue = "ShowGenreSegue"
+    static let embedStaticTableSegue = "EmbedStaticTableSegue"
+    static let segueToLogin = "SegueToLogin"
+}
+
+struct Cells {
+    static let genreCell = "GenreCell"
 }

@@ -28,7 +28,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJs-PR-Bnk">
-                                <rect key="frame" x="108" y="449" width="198" height="40"/>
+                                <rect key="frame" x="108" y="386" width="198" height="40"/>
                                 <color key="backgroundColor" red="0.3526054025" green="0.30432894830000001" blue="0.30728352069999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="IP6-cI-dMb"/>
@@ -43,7 +43,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="anR-kF-AJW">
-                                <rect key="frame" x="16" y="207" width="382" height="219"/>
+                                <rect key="frame" x="16" y="207" width="382" height="156"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dBX-Wd-GAs">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="56"/>
@@ -53,16 +53,8 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KWq-gd-HH5">
-                                        <rect key="frame" x="0.0" y="63" width="382" height="56"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="56" id="7aX-0x-ipC"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JyG-Ac-s9S">
-                                        <rect key="frame" x="0.0" y="126" width="382" height="56"/>
+                                        <rect key="frame" x="0.0" y="63" width="382" height="56"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="EIl-fn-iy8"/>
                                         </constraints>
@@ -70,7 +62,7 @@
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bp2-XE-w8i">
-                                        <rect key="frame" x="0.0" y="189" width="382" height="30"/>
+                                        <rect key="frame" x="0.0" y="126" width="382" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already a user?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Noo-6g-Vpz">
                                                 <rect key="frame" x="0.0" y="0.0" width="118" height="30"/>
@@ -119,7 +111,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Food Truck TrackR" id="Msp-tN-PAO"/>
                     <connections>
-                        <outlet property="emailTextField" destination="KWq-gd-HH5" id="jK9-qH-Lzl"/>
                         <outlet property="passwordTextField" destination="JyG-Ac-s9S" id="XcN-ny-VcE"/>
                         <outlet property="roleSegmentedControl" destination="1tN-dk-nsK" id="rNF-Sj-zcD"/>
                         <outlet property="signupLoginButton" destination="Emx-wK-Aw3" id="sNu-1L-pM0"/>
@@ -128,7 +119,7 @@
                         <outlet property="titleLabel" destination="OBT-2a-tdr" id="kZL-YQ-bJd"/>
                         <outlet property="titleMessageLabel" destination="9c2-4K-LIb" id="ulT-fu-Gd9"/>
                         <outlet property="usernameTextField" destination="dBX-Wd-GAs" id="8t3-B1-wd5"/>
-                        <segue destination="XXU-Rd-nIG" kind="show" identifier="MyAccountSegue" id="3Dc-6z-5bF"/>
+                        <segue destination="XXU-Rd-nIG" kind="presentation" identifier="MyAccountSegue" modalPresentationStyle="fullScreen" id="3Dc-6z-5bF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ei1-pR-95J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -157,10 +148,10 @@
             </objects>
             <point key="canvasLocation" x="-113.04347826086958" y="37.5"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--MyAccountStoryboard-->
         <scene sceneID="LPi-Q7-WGl">
             <objects>
-                <viewControllerPlaceholder id="XXU-Rd-nIG" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="MyAccountStoryboard" id="XXU-Rd-nIG" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="OjT-xs-gvz"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uHV-D8-3SQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
