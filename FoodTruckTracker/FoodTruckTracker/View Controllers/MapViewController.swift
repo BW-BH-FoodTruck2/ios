@@ -203,16 +203,6 @@ class MapViewController: UIViewController {
 			return false
 		}
 
-		/*
-		// MARK: - Navigation
-
-		// In a storyboard-based application, you will often want to do a little preparation before navigation
-		override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-			// Get the new view controller using segue.destination.
-			// Pass the selected object to the new view controller.
-		}
-		*/
-
 	}
 
 	extension MapViewController: CLLocationManagerDelegate {
@@ -246,8 +236,7 @@ class MapViewController: UIViewController {
 		}
 
 		func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-			guard let cell = searchResultsTableView.dequeueReusableCell(withIdentifier: "FoodTruckCell",
-																		for: indexPath) as? FoodTruckTableViewCell else { return UITableViewCell() }
+			guard let cell = searchResultsTableView.dequeueReusableCell(withIdentifier: "FoodTruckCell", for: indexPath) as? FoodTruckTableViewCell else { return UITableViewCell() }
 
 			let truck = searchResult[indexPath.row]
 			cell.truck = truck
@@ -310,12 +299,12 @@ class MapViewController: UIViewController {
 		}
 	}
 
-	extension MapViewController: ShowTruckOnMap {
-		func truckWasSelected(_ truck: TruckRepresentation) {
-			searchBarCancelButtonClicked(foodTruckSearchBar)
-			let coordinate = CLLocationCoordinate2D(latitude: truck.location.latitude, longitude: truck.location.longitute)
-			getDirections(to: coordinate)
-		}
-	}
+//	extension MapViewController: ShowTruckOnMap {
+//		func truckWasSelected(_ truck: TruckRepresentation) {
+//			searchBarCancelButtonClicked(foodTruckSearchBar)
+//			let coordinate = CLLocationCoordinate2D(latitude: truck.location.latitude, longitude: truck.location.longitute)
+//			getDirections(to: coordinate)
+//		}
+//	}
 
 
