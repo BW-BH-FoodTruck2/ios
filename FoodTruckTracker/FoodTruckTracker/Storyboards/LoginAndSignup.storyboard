@@ -27,7 +27,7 @@
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJs-PR-Bnk">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJs-PR-Bnk" customClass="RoundedButton" customModule="FoodTruckTracker" customModuleProvider="target">
                                 <rect key="frame" x="108" y="386" width="198" height="40"/>
                                 <color key="backgroundColor" red="0.3526054025" green="0.30432894830000001" blue="0.30728352069999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>

@@ -21,9 +21,7 @@
 		6335250923C65D480088B8C9 /* GenreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6335250823C65D480088B8C9 /* GenreTableViewCell.swift */; };
 		63A3574A23C6666C00EBD0ED /* StaticTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A3574923C6666C00EBD0ED /* StaticTableViewController.swift */; };
 		63A3574C23C6715900EBD0ED /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A3574B23C6715900EBD0ED /* SplashScreenViewController.swift */; };
-		63187D7523C5287F00871F74 /* MyAccountStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63187D7423C5287F00871F74 /* MyAccountStoryboard.storyboard */; };
-		63187D7723C52C6400871F74 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63187D7623C52C6400871F74 /* MyAccountViewController.swift */; };
-		63187D7A23C52D9400871F74 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63187D7923C52D9400871F74 /* Constants.swift */; };
+		63A3574E23C6A81600EBD0ED /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A3574D23C6A81600EBD0ED /* RoundedButton.swift */; };
 		DD51D2D023C54F2F0009C91E /* FoodTruckTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD5E2DE23C51A80005CCD64 /* FoodTruckTableViewCell.swift */; };
 		DD96B22423C623090080A110 /* StartScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD96B22623C623090080A110 /* StartScreen.storyboard */; };
 		DD96B22823C628C30080A110 /* StartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD96B22723C628C30080A110 /* StartScreenViewController.swift */; };
@@ -84,9 +82,7 @@
 		6335250823C65D480088B8C9 /* GenreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreTableViewCell.swift; sourceTree = "<group>"; };
 		63A3574923C6666C00EBD0ED /* StaticTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticTableViewController.swift; sourceTree = "<group>"; };
 		63A3574B23C6715900EBD0ED /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
-		63187D7423C5287F00871F74 /* MyAccountStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyAccountStoryboard.storyboard; sourceTree = "<group>"; };
-		63187D7623C52C6400871F74 /* MyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
-		63187D7923C52D9400871F74 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		63A3574D23C6A81600EBD0ED /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		DD96B22523C623090080A110 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/StartScreen.storyboard; sourceTree = "<group>"; };
 		DD96B22723C628C30080A110 /* StartScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenViewController.swift; sourceTree = "<group>"; };
 		DD96B22923C62B430080A110 /* AddTruck.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddTruck.storyboard; sourceTree = "<group>"; };
@@ -317,6 +313,7 @@
 			children = (
 				DDD5E2DE23C51A80005CCD64 /* FoodTruckTableViewCell.swift */,
 				6335250823C65D480088B8C9 /* GenreTableViewCell.swift */,
+				63A3574D23C6A81600EBD0ED /* RoundedButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -483,6 +480,7 @@
 				DDD5E2DC23C5162B005CCD64 /* TruckController.swift in Sources */,
 				DD96B23523C66C940080A110 /* UIColor extension.swift in Sources */,
 				DD96B23323C6678F0080A110 /* CuisinePickerViewController.swift in Sources */,
+				63A3574E23C6A81600EBD0ED /* RoundedButton.swift in Sources */,
 				DDD5E2CC23C4BCD7005CCD64 /* VendorRepresentation.swift in Sources */,
 				63187D7723C52C6400871F74 /* MyAccountViewController.swift in Sources */,
 				DDD5E28C23C3CA33005CCD64 /* SceneDelegate.swift in Sources */,
