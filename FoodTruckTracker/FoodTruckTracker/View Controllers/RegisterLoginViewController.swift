@@ -85,13 +85,13 @@ class RegisterLoginViewController: UIViewController {
         case Segues.myAccountSegue:
             guard let startScreen = segue.destination as? UITabBarController else { return }
             
-            if let myAccountVC = startScreen.viewControllers?.last as? MyAccountViewController {
-                myAccountVC.vendor = vendor
+            if let navController = startScreen.viewControllers?.last as? UINavigationController, let myAccountVC = navController.viewControllers.first as? MyAccountViewController {
                 myAccountVC.consumer = consumer
             }
             
             if let navController = startScreen.viewControllers?.first as? UINavigationController, let startScreenVC = navController.viewControllers.first as? StartScreenViewController {
                 startScreenVC.vendor = vendor
+                startScreenVC.consumer = consumer
             }
         default:
             break

@@ -19,6 +19,7 @@ class StartScreenViewController: UIViewController {
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - Properties
     var vendor: VendorLogin?
+    var consumer: ConsumerLogin?
     let truckController = TruckController.shared
     var trucks = [TruckRepresentation]()
     
@@ -28,6 +29,14 @@ class StartScreenViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        
+        if let _ = vendor {
+            tabBarController?.viewControllers?.removeLast()
+        }
+        
+        if let _ = consumer {
+            tabBarController?.viewControllers?.removeFirst()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
