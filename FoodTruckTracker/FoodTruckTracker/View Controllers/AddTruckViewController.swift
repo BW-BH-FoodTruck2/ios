@@ -23,11 +23,75 @@ class AddTruckViewController: UIViewController, UIImagePickerControllerDelegate,
     var imageURLString: String?
     var imagePickerController = UIImagePickerController()
     var vendor: VendorLogin?
+    var truck: TruckRepresentation? {
+        didSet {
+            updateViews()
+        }
+    }
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 	// MARK: - View Controller Life Cycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        updateViews()
+	}
+    
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Private
+    private func showAlert(title: String, message: String, completion: @escaping () -> () = { }) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+            completion()
+        })
+        present(alert, animated: true)
+    }
+    
+    private func updateViews() {
+        guard let truck = truck, self.isViewLoaded else { return }
+        truckNameTextField.text = truck.truckName
+        cuisineTypeTextField.text = truck.cuisineType
+    }
+    
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+	// MARK: - Actions
+	@IBAction func addTruckButton(_ sender: UIBarButtonItem) {
+        if let truck = truck {
+            guard let truckName = truckNameTextField.text,
+            !truckName.isEmpty,
+            let cuisine = cuisineTypeTextField.text,
+                !cuisine.isEmpty, let vendor = vendor, let bearer = vendor.bearer, let id = vendor.id else { return }
+            let newTruck = TruckRepresentation(id: truck.id, truckName: truckName, cuisineType: cuisine, operatorID: id, imageURL: "")
+            truckController.updateTruck(with: bearer, truck: newTruck) { [weak self] error in
+                if let error = error {
+                    self?.showAlert(title: "Error", message: error.localizedDescription)
+                }
+            }
+            self.dismiss(animated: true)
+        } else {
+            guard let truckName = truckNameTextField.text,
+                !truckName.isEmpty,
+                let cuisine = cuisineTypeTextField.text,
+                !cuisine.isEmpty, let vendor = vendor, let bearer = vendor.bearer, let id = vendor.id else { return }
+            let image = imageURLString ?? ""
+            truckController.addTruck(with: bearer, name: truckName, imageURL: image, cuisineType: cuisine, operatorId: id) { [weak self] error in
+                guard let self = self else { return }
+                if let error = error {
+                    self.showAlert(title: "Error", message: error.localizedDescription)
+                }
+            }
+            self.dismiss(animated: true)
+        }
+	}
+    
+	@IBAction func addPhotoButton(_ sender: UIButton) {
+
+		if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+			let imagePicker = UIImagePickerController()
+			imagePicker.delegate = self
+			imagePicker.sourceType = .photoLibrary
+			imagePicker.allowsEditing = false
+			present(imagePicker, animated: true, completion: nil)
+		}
 	}
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
@@ -41,44 +105,6 @@ class AddTruckViewController: UIViewController, UIImagePickerControllerDelegate,
             break
         }
     }
-    
-    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
-    // MARK: - Private
-    private func showAlert(title: String, message: String, completion: @escaping () -> () = { }) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
-            completion()
-        })
-        present(alert, animated: true)
-    }
-    
-    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
-	// MARK: - Actions
-	@IBAction func addTruckButton(_ sender: UIBarButtonItem) {
-		guard let truckName = truckNameTextField.text,
-			!truckName.isEmpty,
-			let cuisine = cuisineTypeTextField.text,
-            !cuisine.isEmpty, let vendor = vendor, let bearer = vendor.bearer, let id = vendor.id else { return }
-		let image = imageURLString ?? ""
-        truckController.addTruck(with: bearer, name: truckName, imageURL: image, cuisineType: cuisine, operatorId: id) { [weak self] error in
-            guard let self = self else { return }
-            if let error = error {
-                self.showAlert(title: "Error", message: error.localizedDescription)
-            }
-        }
-        self.dismiss(animated: true, completion: nil)
-	}
-    
-	@IBAction func addPhotoButton(_ sender: UIButton) {
-
-		if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-			let imagePicker = UIImagePickerController()
-			imagePicker.delegate = self
-			imagePicker.sourceType = .photoLibrary
-			imagePicker.allowsEditing = false
-			present(imagePicker, animated: true, completion: nil)
-		}
-	}
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - ImagePickerController Delegate

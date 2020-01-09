@@ -33,8 +33,6 @@ class MapViewController: UIViewController {
 
 			checkLocationServices()
 
-			truckController.refreshTrucksFromServer()
-
 			foodTruckSearchBar.showsCancelButton = false
 			foodTruckSearchBar.delegate = self
 			foodTruckSearchBar.resignFirstResponder()
