@@ -76,7 +76,7 @@
                                                 <color key="textColor" red="0.98451274629999996" green="0.72469300029999995" blue="0.061607860030000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0CL-yT-D7y">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0CL-yT-D7y" customClass="RoundedButton" customModule="FoodTruckTracker" customModuleProvider="target">
                                                 <rect key="frame" x="109" y="285.5" width="180" height="38"/>
                                                 <color key="backgroundColor" red="0.3526054025" green="0.30432894830000001" blue="0.30728352069999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>

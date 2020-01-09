@@ -27,9 +27,17 @@ class AddTruckViewController: UIViewController, UIImagePickerControllerDelegate,
 	var truckController = TruckController.shared
 	var cuisine: CuisineType?
 	var imageURLString: String?
-	var cuisinePickerData: [CuisineType] = []
-	var cuisinePicker: UIPickerView! = UIPickerView()
 	var imagePickerController = UIImagePickerController()
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "CuisinePickerSegue":
+            guard let cuisinePickerVC = segue.destination as? CuisinePickerViewController else { return }
+            cuisinePickerVC.delegate = self
+        default:
+            break
+        }
+    }
 
 	// MARK: - Actions
 	@IBAction func addTruckButton(_ sender: UIBarButtonItem) {
@@ -65,7 +73,7 @@ class AddTruckViewController: UIViewController, UIImagePickerControllerDelegate,
 			present(imagePicker, animated: true, completion: nil)
 		}
 	}
-
+    
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 		guard let truckImageUrl = info[.imageURL] as? URL else { return }
 		imageURLString  = truckImageUrl.absoluteString
@@ -81,30 +89,15 @@ class AddTruckViewController: UIViewController, UIImagePickerControllerDelegate,
 }
 
 extension AddTruckViewController: UITextFieldDelegate {
-
-	private func setupPicker() {
-
-		//cuisinePicker.delegate = self as UIPickerViewDelegate
-		//cuisinePicker.dataSource = self as UIPickerViewDataSource
-		self.view.addSubview(cuisinePicker)
-		cuisinePicker.center = self.view.center
-		// Sets Cuisine Picker View
-		cuisinePicker.backgroundColor = UIColor.textWhite
-
-		// Sets Cuisine delegate and datasource
-		cuisinePicker.dataSource = self
-		cuisinePicker.delegate = self
-
-		// Sets the textfields
-		cuisineTypeTextField.inputView = cuisinePicker
-		for cuisine in CuisineType.allCases {
-			cuisinePickerData.append(cuisine)
-		}
-	}
-
 	func textFieldDidBeginEditing(_ textField: UITextField) {
 		if textField == cuisineTypeTextField {
 			performSegue(withIdentifier: "CuisinePickerSegue", sender: self)
 		}
 	}
+}
+
+extension AddTruckViewController: CuisinePickerDelegate {
+    func pickerDidPick(_ cuisineType: CuisineType) {
+        cuisineTypeTextField.text = cuisineType.rawValue
+    }
 }
