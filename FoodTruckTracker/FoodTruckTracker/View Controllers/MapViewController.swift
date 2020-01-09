@@ -33,8 +33,6 @@ class MapViewController: UIViewController {
 
 			checkLocationServices()
 
-			truckController.refreshTrucksFromServer()
-
 			foodTruckSearchBar.showsCancelButton = false
 			foodTruckSearchBar.delegate = self
 			foodTruckSearchBar.resignFirstResponder()
@@ -282,7 +280,6 @@ class MapViewController: UIViewController {
 
 		func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 			searchBar.endEditing(false)
-			searchResult = truckController.getTrucks(with: searchBar.text)
 			searchResultsTableView.reloadData()
 		}
 

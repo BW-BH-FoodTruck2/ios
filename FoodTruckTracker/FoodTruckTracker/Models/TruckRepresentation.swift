@@ -16,7 +16,8 @@ struct TruckRepresentation: Codable {
     var operatorID: Int
     var imageURL: String?
 
-    init(truckName: String, cuisineType: String, operatorID: Int, imageURL: String?) {
+    init(id: Int? = nil, truckName: String, cuisineType: String, operatorID: Int, imageURL: String) {
+        self.id = id
         self.truckName = truckName
         self.cuisineType = cuisineType
         self.operatorID = operatorID

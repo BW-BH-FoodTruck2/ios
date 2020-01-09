@@ -196,9 +196,54 @@ class APIController {
             completion(NSError())
             return
         }
-        
+        print(requestURL)
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.post.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(bearer.token, forHTTPHeaderField: "authorization")
+        
+        
+        let encoder = JSONEncoder()
+        do {
+            let truckData = try encoder.encode(truck)
+            request.httpBody = truckData
+        } catch let encodeError {
+            print(encodeError)
+            completion(encodeError)
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    completion(error)
+                }
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse, response.statusCode != 201 {
+                print(response.statusCode)
+                DispatchQueue.main.async {
+                    completion(NSError())
+                }
+                return
+            }
+            
+            DispatchQueue.main.async {
+                completion(nil)
+            }
+        }.resume()
+    }
+    
+    func updateTruck(truck: TruckRepresentation, with bearer: Bearer, completion: @escaping (Error?) -> ()) {
+        guard let id = truck.id, let requestURL = baseURL?.appendingPathComponent("trucks").appendingPathComponent("\(id)") else {
+            completion(NSError())
+            return
+        }
+        
+        print(requestURL)
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.put.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue(bearer.token, forHTTPHeaderField: "authorization")
         
@@ -220,6 +265,38 @@ class APIController {
             }
             
             if let response = response as? HTTPURLResponse, response.statusCode != 200 {
+                DispatchQueue.main.async {
+                    completion(NSError())
+                }
+                return
+            }
+            
+            DispatchQueue.main.async {
+                completion(nil)
+            }
+        }.resume()
+    }
+    
+    func deleteTruck(_ truck: TruckRepresentation, with bearer: Bearer, completion: @escaping (Error?) -> ()) {
+        guard let id = truck.id, let requestURL = baseURL?.appendingPathComponent("trucks").appendingPathComponent("\(id)") else {
+            completion(NSError())
+            return
+        }
+        
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.delete.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(bearer.token, forHTTPHeaderField: "authorization")
+        
+        URLSession.shared.dataTask(with: request) { _, response, error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    completion(error)
+                }
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse, response.statusCode != 201 {
                 DispatchQueue.main.async {
                     completion(NSError())
                 }
