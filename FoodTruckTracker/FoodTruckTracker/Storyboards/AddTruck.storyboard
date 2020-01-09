@@ -47,7 +47,7 @@
                                                 </constraints>
                                                 <state key="normal" title="Choose Cuisine:"/>
                                                 <connections>
-                                                    <segue destination="vGq-oo-IYz" kind="popoverPresentation" popoverAnchorView="U1C-Yw-Ksg" id="5xP-nj-XnR">
+                                                    <segue destination="vGq-oo-IYz" kind="popoverPresentation" identifier="CuisinePickerSegue" popoverAnchorView="U1C-Yw-Ksg" id="5xP-nj-XnR">
                                                         <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
                                                     </segue>
                                                 </connections>
@@ -133,6 +133,9 @@
                         <viewLayoutGuide key="safeArea" id="ste-Gh-cwe"/>
                     </view>
                     <size key="freeformSize" width="414" height="286"/>
+                    <connections>
+                        <outlet property="cuisinePicker" destination="dEx-lp-uQE" id="GgT-BP-9FF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g1J-kI-1Nk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

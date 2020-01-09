@@ -38,9 +38,6 @@ class MyAccountViewController: UIViewController {
             if let consumer = consumer {
                 searchByGenreVC.consumer = consumer
             }
-            if let vendor = vendor {
-                searchByGenreVC.vendor = vendor
-            }
         default:
             break
         }
@@ -49,12 +46,10 @@ class MyAccountViewController: UIViewController {
     private func updateViews() {
         if let vendor = vendor, self.isViewLoaded {
             usernameLabel.text = vendor.username
-            print(vendor.bearer?.token)
         }
         
         if let consumer = consumer, self.isViewLoaded {
             usernameLabel.text = consumer.username
-            print(consumer.bearer?.token)
         }
     }
 }
