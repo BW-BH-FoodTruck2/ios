@@ -9,26 +9,29 @@
 import UIKit
 
 class AddTruckViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Outlets
 	@IBOutlet weak var truckNameTextField: UITextField!
 	@IBOutlet weak var cuisineTypeTextField: UITextField!
 	@IBOutlet weak var truckImageView: UIImageView!
     
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Properties
+    var truckController = TruckController.shared
+    var cuisine: CuisineType?
+    var imageURLString: String?
+    var imagePickerController = UIImagePickerController()
     var vendor: VendorLogin?
-
-	// MARK: - View Lifecycle
+    
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+	// MARK: - View Controller Life Cycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
-        print(vendor)
-		// Do any additional setup after loading the view.
 	}
-
-	// MARK: - Properties
-	var truckController = TruckController.shared
-	var cuisine: CuisineType?
-	var imageURLString: String?
-	var imagePickerController = UIImagePickerController()
     
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "CuisinePickerSegue":
@@ -38,7 +41,18 @@ class AddTruckViewController: UIViewController, UIImagePickerControllerDelegate,
             break
         }
     }
-
+    
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - Private
+    private func showAlert(title: String, message: String, completion: @escaping () -> () = { }) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+            completion()
+        })
+        present(alert, animated: true)
+    }
+    
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 	// MARK: - Actions
 	@IBAction func addTruckButton(_ sender: UIBarButtonItem) {
 		guard let truckName = truckNameTextField.text,
@@ -55,14 +69,6 @@ class AddTruckViewController: UIViewController, UIImagePickerControllerDelegate,
         self.dismiss(animated: true, completion: nil)
 	}
     
-    private func showAlert(title: String, message: String, completion: @escaping () -> () = { }) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
-            completion()
-        })
-        present(alert, animated: true)
-    }
-
 	@IBAction func addPhotoButton(_ sender: UIButton) {
 
 		if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
@@ -74,6 +80,8 @@ class AddTruckViewController: UIViewController, UIImagePickerControllerDelegate,
 		}
 	}
     
+    // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    // MARK: - ImagePickerController Delegate
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 		guard let truckImageUrl = info[.imageURL] as? URL else { return }
 		imageURLString  = truckImageUrl.absoluteString
@@ -88,6 +96,8 @@ class AddTruckViewController: UIViewController, UIImagePickerControllerDelegate,
 	}
 }
 
+// --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+// MARK: - UITextField Delegate
 extension AddTruckViewController: UITextFieldDelegate {
 	func textFieldDidBeginEditing(_ textField: UITextField) {
 		if textField == cuisineTypeTextField {
@@ -96,6 +106,8 @@ extension AddTruckViewController: UITextFieldDelegate {
 	}
 }
 
+// --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+// MARK: - Cuisine Picker Delegate
 extension AddTruckViewController: CuisinePickerDelegate {
     func pickerDidPick(_ cuisineType: CuisineType) {
         cuisineTypeTextField.text = cuisineType.rawValue

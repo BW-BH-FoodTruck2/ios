@@ -145,7 +145,7 @@ class APIController {
         }.resume()
     }
     
-    func fetchAllTrucks(bearer: Bearer, completion: @escaping ([TruckPostable]?, Error?) -> ()) {
+    func fetchAllTrucks(bearer: Bearer, completion: @escaping ([TruckRepresentation]?, Error?) -> ()) {
         guard let requestURL = baseURL?.appendingPathComponent("trucks") else {
             completion(nil, NSError())
             return
@@ -178,7 +178,7 @@ class APIController {
             
             let decoder = JSONDecoder()
             do {
-                let trucksData = try decoder.decode([TruckPostable].self, from: data)
+                let trucksData = try decoder.decode([TruckRepresentation].self, from: data)
                 DispatchQueue.main.async {
                     completion(trucksData, nil)
                 }
@@ -191,7 +191,7 @@ class APIController {
         }.resume()
     }
     
-    func addTruck(truck: TruckPostable, with bearer: Bearer, completion: @escaping (Error?) -> ()) {
+    func addTruck(truck: TruckRepresentation, with bearer: Bearer, completion: @escaping (Error?) -> ()) {
         guard let requestURL = baseURL?.appendingPathComponent("trucks") else {
             completion(NSError())
             return
