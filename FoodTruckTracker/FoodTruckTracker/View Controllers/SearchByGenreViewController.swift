@@ -19,7 +19,7 @@ class SearchByGenreViewController: UIViewController {
     let apiController = APIController()
     var consumer: ConsumerLogin?
     var vendor: VendorLogin?
-    var trucks = [TruckRepresentation]() {
+    var trucks = [TruckPostable]() {
         didSet {
             tableView.reloadData()
         }

@@ -19,7 +19,7 @@ class AddTruckViewController: UIViewController, UIImagePickerControllerDelegate,
 	// MARK: - View Lifecycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
+        print(vendor)
 		// Do any additional setup after loading the view.
 	}
 
@@ -45,14 +45,14 @@ class AddTruckViewController: UIViewController, UIImagePickerControllerDelegate,
 			!truckName.isEmpty,
 			let cuisine = cuisineTypeTextField.text,
             !cuisine.isEmpty, let vendor = vendor, let bearer = vendor.bearer, let id = vendor.id else { return }
-		guard let image = imageURLString else { return }
+		let image = imageURLString ?? ""
         truckController.addTruck(with: bearer, name: truckName, imageURL: image, cuisineType: cuisine, operatorId: id) { [weak self] error in
             guard let self = self else { return }
             if let error = error {
                 self.showAlert(title: "Error", message: error.localizedDescription)
-                self.dismiss(animated: true, completion: nil)
             }
         }
+        self.dismiss(animated: true, completion: nil)
 	}
     
     private func showAlert(title: String, message: String, completion: @escaping () -> () = { }) {

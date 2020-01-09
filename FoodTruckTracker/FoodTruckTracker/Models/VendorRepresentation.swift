@@ -13,11 +13,11 @@ class VendorRepresentation: Codable, Equatable {
     var username: String
     var password: String
     var email: String
-    var ownedTrucks: [TruckRepresentation]
+    var ownedTrucks: [TruckPostable]
     var id: Int
     var bearer: Bearer?
 
-    init(username: String, password: String, email: String, ownedTrucks: [TruckRepresentation], id: Int) {
+    init(username: String, password: String, email: String, ownedTrucks: [TruckPostable], id: Int) {
         self.username = username
         self.password = password
         self.email = email

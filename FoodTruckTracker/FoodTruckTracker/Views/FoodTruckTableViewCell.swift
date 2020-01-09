@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ShowTruckOnMap {
-	func truckWasSelected(_ truck: TruckRepresentation)
+	func truckWasSelected(_ truck: TruckPostable)
 }
 
 class FoodTruckTableViewCell: UITableViewCell {
@@ -21,7 +21,7 @@ class FoodTruckTableViewCell: UITableViewCell {
 	@IBOutlet weak var favoriteButton: UIButton!
 
 
-	var truck: TruckRepresentation? {
+	var truck: TruckPostable? {
 		didSet {
 			updateViews()
 		}

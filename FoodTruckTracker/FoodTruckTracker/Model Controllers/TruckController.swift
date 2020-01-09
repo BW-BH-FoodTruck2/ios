@@ -11,15 +11,15 @@ import CoreData
 
 class TruckController {
 
-	var trucks: [TruckRepresentation] = []
+	var trucks: [TruckPostable] = []
 
 	static let shared = TruckController()
     let apiController = APIController()
 
-	func getTrucks(with searchTerm: String?) -> [TruckRepresentation] {
+	func getTrucks(with searchTerm: String?) -> [TruckPostable] {
 		guard let searchTerm = searchTerm, !searchTerm.isEmpty else { return [] }
 
-		let filteredNames = trucks.filter({(item: TruckRepresentation) -> Bool in
+		let filteredNames = trucks.filter({(item: TruckPostable) -> Bool in
 			let stringMatch = item.truckName.lowercased().range(of: searchTerm.lowercased())
 			return stringMatch != nil ? true : false
 		})
@@ -27,7 +27,7 @@ class TruckController {
 	}
     
     func addTruck(with bearer: Bearer, name: String, imageURL: String, cuisineType: String, operatorId: Int, completion: @escaping (Error?) -> ()) {
-        let truck = TruckRepresentation(truckName: name, cuisineType: cuisineType, operatorID: operatorId, imageURL: imageURL)
+        let truck = TruckPostable(truckName: name, cuisineType: cuisineType, operatorID: operatorId, imageURL: imageURL)
         apiController.addTruck(truck: truck, with: bearer) { error in
             if let error = error {
                 completion(error)

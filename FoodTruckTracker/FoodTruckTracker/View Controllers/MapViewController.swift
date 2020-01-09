@@ -18,7 +18,7 @@ class MapViewController: UIViewController {
 
 	let locationManager = CLLocationManager()
 
-		var searchResult: [TruckRepresentation] = []
+		var searchResult: [TruckPostable] = []
 
 		let vendorController = VendorController.shared
 		let consumerController = ConsumerController.shared
