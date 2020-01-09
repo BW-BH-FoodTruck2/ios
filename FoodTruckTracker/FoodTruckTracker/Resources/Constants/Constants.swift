@@ -15,8 +15,12 @@ struct Segues {
     static let segueToLogin = "SegueToLogin"
     static let showAddTruckSegue = "ShowAddTruckSegue"
     static let showEditTruckSegue = "ShowEditTruckSegue"
+    static let showAllTrucksSegue = "ShowAllTrucksSegue"
+    static let showFavoritesSegue = "ShowFavoritesSegue"
 }
 
 struct Cells {
     static let genreCell = "GenreCell"
+    static let searchTrucksCell = "SearchTrucksCell"
+    static let favoritesCell = "FavoritesCell"
 }

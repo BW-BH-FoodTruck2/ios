@@ -18,7 +18,6 @@ class SearchByGenreViewController: UIViewController {
     // MARK: - Properties
     let apiController = APIController()
     var consumer: ConsumerLogin?
-    var vendor: VendorLogin?
     var trucks = [TruckRepresentation]() {
         didSet {
             tableView.reloadData()
@@ -36,19 +35,6 @@ class SearchByGenreViewController: UIViewController {
     
     private func fetchGenres() {
         if let consumer = consumer, let bearer = consumer.bearer {
-            apiController.fetchAllTrucks(bearer: bearer) { [weak self] trucks, error in
-                guard let self = self else { return }
-                if let error = error {
-                    self.showAlert(title: "Error", message: error.localizedDescription)
-                }
-                
-                guard let trucks = trucks else { return }
-                self.trucks = trucks
-                self.tableView.reloadData()
-            }
-        }
-        
-        if let vendor = vendor, let bearer = vendor.bearer {
             apiController.fetchAllTrucks(bearer: bearer) { [weak self] trucks, error in
                 guard let self = self else { return }
                 if let error = error {
