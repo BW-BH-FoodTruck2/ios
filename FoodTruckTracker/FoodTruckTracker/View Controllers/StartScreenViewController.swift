@@ -20,11 +20,7 @@ class StartScreenViewController: UIViewController {
     // MARK: - Properties
     var vendor: VendorLogin?
     let truckController = TruckController.shared
-    var trucks = [TruckRepresentation]() {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    var trucks = [TruckRepresentation]()
     
     // --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     // MARK: - View Controller Life Cycle
@@ -70,6 +66,12 @@ class StartScreenViewController: UIViewController {
         case Segues.showAddTruckSegue:
             guard let navController = segue.destination as? UINavigationController, let addTruckVC = navController.viewControllers.first as? AddTruckViewController else { return }
             addTruckVC.vendor = vendor
+        case Segues.showEditTruckSegue:
+            guard let navController = segue.destination as? UINavigationController,
+                let addTruckVC = navController.viewControllers.first as? AddTruckViewController,
+                let indexPath = tableView.indexPathForSelectedRow else { return }
+            addTruckVC.vendor = vendor
+            addTruckVC.truck = trucks[indexPath.row]
         default:
             break
         }
@@ -98,9 +100,23 @@ extension StartScreenViewController: UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete:
-            print("Deleting item")
+            guard let vendor = vendor, let bearer = vendor.bearer else { return }
+            let truck = trucks[indexPath.row]
+            truckController.deleteTruck(with: bearer, truck: truck) { [weak self] error in
+                guard let self = self else { return }
+                if let error = error {
+                    self.showAlert(title: "Error", message: error.localizedDescription)
+                }
+                self.trucks.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+            
         default:
             break
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

@@ -14,6 +14,7 @@ struct Segues {
     static let embedStaticTableSegue = "EmbedStaticTableSegue"
     static let segueToLogin = "SegueToLogin"
     static let showAddTruckSegue = "ShowAddTruckSegue"
+    static let showEditTruckSegue = "ShowEditTruckSegue"
 }
 
 struct Cells {

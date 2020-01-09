@@ -39,22 +39,24 @@ class TruckController {
             completion(nil)
         }
     }
-
-//	func createTruck(with truckName: String, location: Location, imageOfTruck: String, identifier: UUID = UUID()) {
-//        let truck = Truck(truckName: truckName, customerAvgRating: 0, location: Location(longitude: 0, latitude: 0), imageOfTruck: "")
-//        put(truck: truck)
-//        saveToPersistentStore()
-//    }
-
-	func refreshTrucksFromServer() {
-		
-	}
-
-	func delete() {
-
-	}
-
-	func saveToPersistentStore() {
-		
-	}
+    
+    func updateTruck(with bearer: Bearer, truck: TruckRepresentation, completion: @escaping (Error?) -> ()) {
+        apiController.updateTruck(truck: truck, with: bearer) { error in
+            if let error = error {
+                completion(error)
+            }
+            
+            completion(nil)
+        }
+    }
+    
+    func deleteTruck(with bearer: Bearer, truck: TruckRepresentation, completion: @escaping (Error?) -> ()) {
+        apiController.deleteTruck(truck, with: bearer) { error in
+            if let error = error {
+                completion(error)
+            }
+            
+            completion(nil)
+        }
+    }
 }

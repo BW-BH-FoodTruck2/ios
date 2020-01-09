@@ -90,6 +90,7 @@
                                             <outlet property="cuisineTypeLabel" destination="6uV-CB-dkC" id="oxH-9u-P2P"/>
                                             <outlet property="foodTruckImageView" destination="D55-ou-IoV" id="yg1-Z5-uVX"/>
                                             <outlet property="nameLabel" destination="SmJ-ms-5N9" id="AM6-xf-sKu"/>
+                                            <segue destination="d5z-cf-Nre" kind="show" identifier="ShowEditTruckSegue" id="cfd-te-lh4"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -173,4 +174,7 @@
     <resources>
         <image name="person" catalog="system" width="64" height="58"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="cfd-te-lh4"/>
+    </inferredMetricsTieBreakers>
 </document>
