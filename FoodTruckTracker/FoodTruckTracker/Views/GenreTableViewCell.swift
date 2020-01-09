@@ -18,7 +18,7 @@ class GenreTableViewCell: UITableViewCell {
         }
     }
     
-    var truck: TruckPostable? {
+    var truck: TruckRepresentation? {
         didSet {
             updateViews()
         }

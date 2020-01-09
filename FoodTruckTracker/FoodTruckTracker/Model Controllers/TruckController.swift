@@ -11,23 +11,26 @@ import CoreData
 
 class TruckController {
 
-	var trucks: [TruckPostable] = []
+	var trucks: [TruckRepresentation] = []
 
 	static let shared = TruckController()
     let apiController = APIController()
 
-	func getTrucks(with searchTerm: String?) -> [TruckPostable] {
-		guard let searchTerm = searchTerm, !searchTerm.isEmpty else { return [] }
-
-		let filteredNames = trucks.filter({(item: TruckPostable) -> Bool in
-			let stringMatch = item.truckName.lowercased().range(of: searchTerm.lowercased())
-			return stringMatch != nil ? true : false
-		})
-		return filteredNames
-	}
+    func getAllTrucks(with bearer: Bearer, for vendorID: Int, completion: @escaping ([TruckRepresentation]?, Error?) -> ()) {
+        apiController.fetchAllTrucks(bearer: bearer) { trucks, error in
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+            
+            guard let trucks = trucks else { return }
+            let filteredTrucks = trucks.filter { $0.operatorID == vendorID }
+            completion(filteredTrucks, nil)
+        }
+    }
     
     func addTruck(with bearer: Bearer, name: String, imageURL: String, cuisineType: String, operatorId: Int, completion: @escaping (Error?) -> ()) {
-        let truck = TruckPostable(truckName: name, cuisineType: cuisineType, operatorID: operatorId, imageURL: imageURL)
+        let truck = TruckRepresentation(truckName: name, cuisineType: cuisineType, operatorID: operatorId, imageURL: imageURL)
         apiController.addTruck(truck: truck, with: bearer) { error in
             if let error = error {
                 completion(error)

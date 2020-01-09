@@ -18,7 +18,7 @@ class MapViewController: UIViewController {
 
 	let locationManager = CLLocationManager()
 
-		var searchResult: [TruckPostable] = []
+		var searchResult: [TruckRepresentation] = []
 
 		let vendorController = VendorController.shared
 		let consumerController = ConsumerController.shared
@@ -282,7 +282,6 @@ class MapViewController: UIViewController {
 
 		func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 			searchBar.endEditing(false)
-			searchResult = truckController.getTrucks(with: searchBar.text)
 			searchResultsTableView.reloadData()
 		}
 

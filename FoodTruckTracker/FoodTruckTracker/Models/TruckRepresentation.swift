@@ -1,5 +1,5 @@
 //
-//  TruckPostable.swift
+//  TruckRepresentation.swift
 //  FoodTruckTracker
 //
 //  Created by Percy Ngan on 1/7/20.
@@ -8,14 +8,16 @@
 
 import Foundation
 
-struct TruckPostable: Codable {
+struct TruckRepresentation: Codable {
     
+    var id: Int?
     var truckName: String
     var cuisineType: String
     var operatorID: Int
-    var imageURL: String
+    var imageURL: String?
 
-    init(truckName: String, cuisineType: String, operatorID: Int, imageURL: String) {
+    init(id: Int? = nil, truckName: String, cuisineType: String, operatorID: Int, imageURL: String) {
+        self.id = id
         self.truckName = truckName
         self.cuisineType = cuisineType
         self.operatorID = operatorID
