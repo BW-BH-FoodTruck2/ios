@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6303240523C4CBBA0041566D /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303240423C4CBBA0041566D /* APIController.swift */; };
 		6303240723C4D4840041566D /* Bearer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303240623C4D4840041566D /* Bearer.swift */; };
-		63122B2423C6E27800D1496A /* ServerTruck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63122B2323C6E27800D1496A /* ServerTruck.swift */; };
 		63187D7523C5287F00871F74 /* MyAccountStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63187D7423C5287F00871F74 /* MyAccountStoryboard.storyboard */; };
 		63187D7723C52C6400871F74 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63187D7623C52C6400871F74 /* MyAccountViewController.swift */; };
 		63187D7A23C52D9400871F74 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63187D7923C52D9400871F74 /* Constants.swift */; };
@@ -72,7 +71,6 @@
 /* Begin PBXFileReference section */
 		6303240423C4CBBA0041566D /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		6303240623C4D4840041566D /* Bearer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bearer.swift; sourceTree = "<group>"; };
-		63122B2323C6E27800D1496A /* ServerTruck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerTruck.swift; sourceTree = "<group>"; };
 		63187D7423C5287F00871F74 /* MyAccountStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyAccountStoryboard.storyboard; sourceTree = "<group>"; };
 		63187D7623C52C6400871F74 /* MyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
 		63187D7923C52D9400871F74 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -289,7 +287,6 @@
 				633524FF23C633E90088B8C9 /* FavoriteTruckRepresentation.swift */,
 				6335250123C634420088B8C9 /* TruckRatingRepresentation.swift */,
 				6335250323C6350F0088B8C9 /* MeunItemRepresentation.swift */,
-				63122B2323C6E27800D1496A /* ServerTruck.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -470,7 +467,6 @@
 				DDD5E2D023C4BDBB005CCD64 /* ConsumerRepresentation.swift in Sources */,
 				DDD5E2C323C3DCA3005CCD64 /* CoreDataStack.swift in Sources */,
 				DD51D2D023C54F2F0009C91E /* FoodTruckTableViewCell.swift in Sources */,
-				63122B2423C6E27800D1496A /* ServerTruck.swift in Sources */,
 				DDD5E28A23C3CA33005CCD64 /* AppDelegate.swift in Sources */,
 				6335250223C634420088B8C9 /* TruckRatingRepresentation.swift in Sources */,
 				6375044523C6E1DD00AF94CC /* TruckRepresentation.swift in Sources */,
