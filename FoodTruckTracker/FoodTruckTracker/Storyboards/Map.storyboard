@@ -126,11 +126,11 @@
             </objects>
             <point key="canvasLocation" x="894.20289855072474" y="190.84821428571428"/>
         </scene>
-        <!--Item-->
+        <!--Map-->
         <scene sceneID="ot2-87-nMo">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RSt-t3-3j6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Eia-60-K0i"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" id="Eia-60-K0i"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QEr-G2-wGr">
@@ -149,5 +149,6 @@
     </scenes>
     <resources>
         <image name="checkmark.seal" catalog="system" width="64" height="60"/>
+        <image name="map" catalog="system" width="64" height="56"/>
     </resources>
 </document>
