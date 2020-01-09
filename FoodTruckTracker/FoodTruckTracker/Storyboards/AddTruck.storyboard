@@ -133,6 +133,9 @@
                         <viewLayoutGuide key="safeArea" id="ste-Gh-cwe"/>
                     </view>
                     <size key="freeformSize" width="414" height="286"/>
+                    <connections>
+                        <outlet property="cuisinePicker" destination="dEx-lp-uQE" id="ExT-Fw-VY4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g1J-kI-1Nk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

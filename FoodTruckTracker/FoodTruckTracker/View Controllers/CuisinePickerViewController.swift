@@ -10,6 +10,8 @@ import UIKit
 
 class CuisinePickerViewController: UIViewController {
 
+	@IBOutlet private weak var cuisinePicker: UIPickerView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
