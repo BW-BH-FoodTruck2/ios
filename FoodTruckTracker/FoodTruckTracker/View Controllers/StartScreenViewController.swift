@@ -41,7 +41,6 @@ class StartScreenViewController: UIViewController, UITableViewDataSource, UITabl
         
         tableView.delegate = self
         tableView.dataSource = self
-        
         setColors()
         setupViews()
     }
@@ -68,7 +67,7 @@ class StartScreenViewController: UIViewController, UITableViewDataSource, UITabl
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case Segues.showAddTruckSegue:
-            guard let addTruckVC = segue.destination as? AddTruckViewController else { return }
+            guard let navController = segue.destination as? UINavigationController, let addTruckVC = navController.viewControllers.first as? AddTruckViewController else { return }
             addTruckVC.vendor = vendor
         default:
             break

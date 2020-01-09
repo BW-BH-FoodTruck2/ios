@@ -1,24 +1,26 @@
 //
-//  TruckPostable.swift
+//  ServerTruck.swift
 //  FoodTruckTracker
 //
-//  Created by Percy Ngan on 1/7/20.
+//  Created by Chad Rutherford on 1/8/20.
 //  Copyright © 2020 Lamdba School. All rights reserved.
 //
 
 import Foundation
 
-struct TruckPostable: Codable {
+struct ServerTruck: Codable {
     
+    var id: Int?
     var truckName: String
     var cuisineType: String
     var operatorID: Int
-    var imageURL: String
+    var imageURL: String?
 
-    init(truckName: String, cuisineType: String, operatorID: Int, imageURL: String) {
+    init(id: Int?, truckName: String, cuisineType: String, operatorID: Int, imageURL: String?) {
+        self.id = id
         self.truckName = truckName
         self.cuisineType = cuisineType
         self.operatorID = operatorID
         self.imageURL = imageURL
-	}
+    }
 }
