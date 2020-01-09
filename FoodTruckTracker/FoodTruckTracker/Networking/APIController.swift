@@ -6,6 +6,7 @@
 //  Copyright © 2020 Lamdba School. All rights reserved.
 //
 
+import CoreData
 import Foundation
 
 enum HTTPMethod: String {
@@ -397,6 +398,58 @@ class APIController {
             
             DispatchQueue.main.async {
                 completion(nil)
+            }
+        }.resume()
+    }
+    
+    func fetchFavorites(for diner: ConsumerLogin, with bearer: Bearer, completion: @escaping (Error?) -> ()) {
+        guard let id = diner.id, let requestURL = baseURL?.appendingPathComponent("favoritetrucks").appendingPathComponent("\(id)") else {
+            completion(NSError())
+            return
+        }
+        
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.get.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(bearer.token, forHTTPHeaderField: "authorization")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    completion(error)
+                }
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse, response.statusCode != 200 {
+                DispatchQueue.main.async {
+                    completion(NSError())
+                }
+                return
+            }
+            
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(NSError())
+                }
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            do {
+                let favoriteTrucks = try decoder.decode([FavoriteTruckRepresentation].self, from: data)
+                let moc = CoreDataStack.shared.container.newBackgroundContext()
+                moc.perform {
+                    for truck in favoriteTrucks {
+                        FavoriteTruck(dinerID: Int64(truck.dinerID), truckID: Int64(truck.truckID))
+                    }
+                }
+                try CoreDataStack.shared.save(context: moc)
+            } catch let decodeError {
+                DispatchQueue.main.async {
+                    completion(decodeError)
+                    return
+                }
             }
         }.resume()
     }
