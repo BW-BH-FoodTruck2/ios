@@ -13,6 +13,8 @@ class AddTruckViewController: UIViewController, UIImagePickerControllerDelegate,
 	@IBOutlet weak var truckNameTextField: UITextField!
 	@IBOutlet weak var cuisineTypeTextField: UITextField!
 	@IBOutlet weak var truckImageView: UIImageView!
+    
+    var vendor: VendorLogin?
 
 	// MARK: - View Lifecycle
 	override func viewDidLoad() {
@@ -29,32 +31,29 @@ class AddTruckViewController: UIViewController, UIImagePickerControllerDelegate,
 	var cuisinePicker: UIPickerView! = UIPickerView()
 	var imagePickerController = UIImagePickerController()
 
-//	var truckRep: TruckRepresentation {
-//		let moc = CoreDataStack.shared.mainContext
-//		let request: NSFetchRequest<Truck> = Truck.fetchRequest()
-//
-//		do {
-//			let trucks = try moc.fetch(request)
-//			if let truck = trucks.first,
-//				let truckRep = truck.truckRepresentation {
-//				return truckRep			}
-//		} catch {
-//			fatalError("Error fetching truck: \(error)")
-//		}
-//		return TruckRepresentation()
-//	}
-
 	// MARK: - Actions
 	@IBAction func addTruckButton(_ sender: UIBarButtonItem) {
 		guard let truckName = truckNameTextField.text,
 			!truckName.isEmpty,
 			let cuisine = cuisineTypeTextField.text,
-			!cuisine.isEmpty else { return }
+            !cuisine.isEmpty, let vendor = vendor, let bearer = vendor.bearer, let id = vendor.id else { return }
 		guard let image = imageURLString else { return }
-		print(image)
-//		truckController.createTruck(with: truckName, location: Location(longitude: 0.0, latitude: 0.0), imageOfTruck: image)
-		dismiss(animated: true, completion: nil)
+        truckController.addTruck(with: bearer, name: truckName, imageURL: image, cuisineType: cuisine, operatorId: id) { [weak self] error in
+            guard let self = self else { return }
+            if let error = error {
+                self.showAlert(title: "Error", message: error.localizedDescription)
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
 	}
+    
+    private func showAlert(title: String, message: String, completion: @escaping () -> () = { }) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+            completion()
+        })
+        present(alert, animated: true)
+    }
 
 	@IBAction func addPhotoButton(_ sender: UIButton) {
 

@@ -83,9 +83,16 @@ class RegisterLoginViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case Segues.myAccountSegue:
-            guard let myAccountVC = segue.destination as? MyAccountViewController else { return }
-            myAccountVC.vendor = vendor
-            myAccountVC.consumer = consumer
+            guard let startScreen = segue.destination as? UITabBarController else { return }
+            
+            if let myAccountVC = startScreen.viewControllers?.last as? MyAccountViewController {
+                myAccountVC.vendor = vendor
+                myAccountVC.consumer = consumer
+            }
+            
+            if let navController = startScreen.viewControllers?.first as? UINavigationController, let startScreenVC = navController.viewControllers.first as? StartScreenViewController {
+                startScreenVC.vendor = vendor
+            }
         default:
             break
         }

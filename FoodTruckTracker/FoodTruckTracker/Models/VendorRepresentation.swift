@@ -34,6 +34,7 @@ class VendorRepresentation: Codable, Equatable {
 }
 
 struct VendorLogin: Codable {
+    var id: Int?
     var username: String
     var password: String
     var role: Int

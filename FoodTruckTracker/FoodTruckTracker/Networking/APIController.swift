@@ -85,7 +85,7 @@ class APIController {
         let encoder = JSONEncoder()
         switch role {
         case .diner:
-            let consumer = ConsumerLogin(username: username, password: password, role: role.rawValue, bearer: nil)
+            let consumer = ConsumerLogin(username: username, password: password, role: role.rawValue)
             do {
                 let consumerData = try encoder.encode(consumer)
                 request.httpBody = consumerData
@@ -94,7 +94,7 @@ class APIController {
                 return
             }
         case .truckOperator:
-            let vendor = VendorLogin(username: username, password: password, role: role.rawValue, bearer: nil)
+            let vendor = VendorLogin(username: username, password: password, role: role.rawValue)
             do {
                 let vendorData = try encoder.encode(vendor)
                 request.httpBody = vendorData
@@ -126,13 +126,13 @@ class APIController {
                 let bearer = try decoder.decode(Bearer.self, from: data)
                 switch role {
                 case .diner:
-                    let consumer = ConsumerLogin(username: username, password: password, role: role.rawValue, bearer: bearer)
+                    let consumer = ConsumerLogin(id: bearer.id, username: username, password: password, role: role.rawValue, bearer: bearer)
                     DispatchQueue.main.async {
                         completion(consumer, nil, nil)
                         return
                     }
                 case .truckOperator:
-                    let vendor = VendorLogin(username: username, password: password, role: role.rawValue, bearer: bearer)
+                    let vendor = VendorLogin(id: bearer.id, username: username, password: password, role: role.rawValue, bearer: bearer)
                     DispatchQueue.main.async {
                         completion(nil, vendor, nil)
                         return
@@ -187,6 +187,47 @@ class APIController {
                     completion(nil, decodeError)
                     return
                 }
+            }
+        }.resume()
+    }
+    
+    func addTruck(truck: TruckRepresentation, with bearer: Bearer, completion: @escaping (Error?) -> ()) {
+        guard let requestURL = baseURL?.appendingPathComponent("trucks") else {
+            completion(NSError())
+            return
+        }
+        
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.post.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(bearer.token, forHTTPHeaderField: "authorization")
+        
+        let encoder = JSONEncoder()
+        do {
+            let truckData = try encoder.encode(truck)
+            request.httpBody = truckData
+        } catch let encodeError {
+            completion(encodeError)
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { _, response, error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    completion(error)
+                }
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse, response.statusCode != 200 {
+                DispatchQueue.main.async {
+                    completion(NSError())
+                }
+                return
+            }
+            
+            DispatchQueue.main.async {
+                completion(nil)
             }
         }.resume()
     }
