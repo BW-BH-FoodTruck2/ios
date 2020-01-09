@@ -21,9 +21,24 @@ class FavoritesTableViewController: UITableViewController {
         return frc
     }()
     var diner: ConsumerLogin?
+    let apiController = APIController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let diner = diner, let bearer = diner.bearer else { return }
+        apiController.fetchFavorites(for: diner, with: bearer) { error in
+            if let error = error {
+                self.showAlert(title: "Error", message: error.localizedDescription)
+            }
+        }
+    }
+    
+    private func showAlert(title: String, message: String, completion: @escaping () -> () = { }) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+            completion()
+        })
+        present(alert, animated: true)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
