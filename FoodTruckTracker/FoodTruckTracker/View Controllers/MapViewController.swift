@@ -34,7 +34,7 @@ class MapViewController: UIViewController {
 			checkLocationServices()
 
 			foodTruckSearchBar.showsCancelButton = false
-			foodTruckSearchBar.delegate = self
+			//foodTruckSearchBar.delegate = self
 			foodTruckSearchBar.resignFirstResponder()
 
 			setupTableView()
@@ -236,13 +236,14 @@ class MapViewController: UIViewController {
 		func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 			guard let cell = searchResultsTableView.dequeueReusableCell(withIdentifier: "FoodTruckCell", for: indexPath) as? FoodTruckTableViewCell else { return UITableViewCell() }
 
-			let truck = searchResult[indexPath.row]
-			cell.truck = truck
+//			let truck = searchResult[indexPath.row]
+//			cell.truck = truck
 //			getAddress(CLLocation(latitude: truck.location.latitude, longitude: truck.location.longitute)) { placemark in
 //				if let placemark = placemark {
 //					cell.address = placemark.locality // This may just show the city? There wasn't adiquate documentation
 //				}
-//			}
+			return cell // remove later
+		}
 
 //			if let userLocation = userLocation {
 //				let location = CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude)
@@ -250,9 +251,9 @@ class MapViewController: UIViewController {
 //				let distance: CLLocationDistance = location.distance(from: destination)
 //				cell.distanceAway = Double(distance) / 1609.344
 //			}
-			return cell
+//			return cell
+//		}
 		}
-	}
 
 	extension MapViewController: UISearchBarDelegate {
 		override func resignFirstResponder() -> Bool {
@@ -261,9 +262,9 @@ class MapViewController: UIViewController {
 
 		func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 			guard let text = searchBar.text else { return }
-			if text.isEmpty {
-				_ = searchBarShouldEndEditing(searchBar)
-			}
+//			if text.isEmpty {
+//				_ = searchBarShouldEndEditing(searchBar)
+//			}
 		}
 
 		func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
@@ -296,12 +297,13 @@ class MapViewController: UIViewController {
 		}
 	}
 
-//	extension MapViewController: ShowTruckOnMap {
-//		func truckWasSelected(_ truck: TruckRepresentation) {
-//			searchBarCancelButtonClicked(foodTruckSearchBar)
+	extension MapViewController: ShowTruckOnMap {
+		func truckWasSelected(_ truck: TruckRepresentation) {
+			searchBarCancelButtonClicked(foodTruckSearchBar)
 //			let coordinate = CLLocationCoordinate2D(latitude: truck.location.latitude, longitude: truck.location.longitute)
-//			getDirections(to: coordinate)
-//		}
-//	}
+			//getDirections(to: coordinate)
+		}
+}
+
 
 
