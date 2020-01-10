@@ -83,7 +83,5 @@ class SearchTrucksTableViewController: UITableViewController {
                 self.showAlert(title: "Error", message: error.localizedDescription)
             }
         }
-        guard let truckID = self.trucks[indexPath.row].id else { return }
-        FavoriteTruck(dinerID: Int64(id), truckID: Int64(truckID))
     }
 }

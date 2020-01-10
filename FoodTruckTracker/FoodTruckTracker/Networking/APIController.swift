@@ -445,6 +445,10 @@ class APIController {
                     }
                 }
                 try CoreDataStack.shared.save(context: moc)
+                
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
             } catch let decodeError {
                 DispatchQueue.main.async {
                     completion(decodeError)
