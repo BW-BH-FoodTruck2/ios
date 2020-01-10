@@ -10,6 +10,8 @@ import UIKit
 
 protocol StaticTableViewControllerDelegate: class {
     func searchTapped()
+    func trucksTapped()
+    func favoritesTapped()
 }
 
 class StaticTableViewController: UITableViewController {
@@ -17,8 +19,12 @@ class StaticTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.row == 1 {
+        if indexPath.row == 0 {
+            delegate?.favoritesTapped()
+        } else if indexPath.row == 1 {
             delegate?.searchTapped()
+        } else if indexPath.row == 4 {
+            delegate?.trucksTapped()
         }
     }
 }

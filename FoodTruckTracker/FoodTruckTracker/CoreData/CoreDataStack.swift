@@ -15,7 +15,7 @@ class CoreDataStack {
 
 	let container: NSPersistentContainer = {
 
-		let container = NSPersistentContainer(name: "FoodTruck" as String)
+		let container = NSPersistentContainer(name: "FoodTruckTracker" as String)
 		container.loadPersistentStores { _, error in
 			if let error = error as NSError? {
                 fatalError("Failed to load persistent stores: \(error.localizedDescription)")
@@ -28,4 +28,18 @@ class CoreDataStack {
 	var mainContext: NSManagedObjectContext {
 		return container.viewContext
 	}
+    
+    func save(context: NSManagedObjectContext = CoreDataStack.shared.mainContext) throws {
+        var error: Error?
+        
+        context.performAndWait {
+            do {
+                try context.save()
+            } catch let saveError {
+                error = saveError
+            }
+        }
+        
+        if let error = error { throw error }
+    }
 }

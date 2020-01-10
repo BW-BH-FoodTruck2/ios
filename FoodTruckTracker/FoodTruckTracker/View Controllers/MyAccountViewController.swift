@@ -38,6 +38,12 @@ class MyAccountViewController: UIViewController {
             if let consumer = consumer {
                 searchByGenreVC.consumer = consumer
             }
+        case Segues.showAllTrucksSegue:
+            guard let searchTrucksVC = segue.destination as? SearchTrucksTableViewController else { return }
+            searchTrucksVC.diner = consumer
+        case Segues.showFavoritesSegue:
+            guard let favoritesVC = segue.destination as? FavoritesTableViewController else { return }
+            favoritesVC.diner = consumer
         default:
             break
         }
@@ -57,5 +63,13 @@ class MyAccountViewController: UIViewController {
 extension MyAccountViewController: StaticTableViewControllerDelegate {
     func searchTapped() {
         self.performSegue(withIdentifier: Segues.showGenreSegue, sender: self)
+    }
+    
+    func trucksTapped() {
+        self.performSegue(withIdentifier: Segues.showAllTrucksSegue, sender: self)
+    }
+    
+    func favoritesTapped() {
+        self.performSegue(withIdentifier: Segues.showFavoritesSegue, sender: self)
     }
 }

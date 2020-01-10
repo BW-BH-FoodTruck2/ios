@@ -6,6 +6,7 @@
 //  Copyright © 2020 Lamdba School. All rights reserved.
 //
 
+import CoreData
 import Foundation
 
 enum HTTPMethod: String {
@@ -191,6 +192,56 @@ class APIController {
         }.resume()
     }
     
+    func fetchTruck(for id: Int, with bearer: Bearer, completion: @escaping (TruckRepresentation?, Error?) -> ()) {
+        guard let requestURL = baseURL?.appendingPathComponent("trucks").appendingPathComponent("\(id)") else {
+            completion(nil, NSError())
+            return
+        }
+        
+        print(requestURL)
+        
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.get.rawValue
+        request.setValue(bearer.token, forHTTPHeaderField: "authorization")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse, response.statusCode != 200 {
+                print(response.statusCode)
+                DispatchQueue.main.async {
+                    completion(nil, NSError())
+                }
+                return
+            }
+            
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(nil, NSError())
+                }
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            do {
+                let truck = try decoder.decode(TruckRepresentation.self, from: data)
+                DispatchQueue.main.async {
+                    completion(truck, nil)
+                }
+            } catch let decodeError {
+                DispatchQueue.main.async {
+                    completion(nil, decodeError)
+                }
+                return
+            }
+        }.resume()
+    }
+    
     func addTruck(truck: TruckRepresentation, with bearer: Bearer, completion: @escaping (Error?) -> ()) {
         guard let requestURL = baseURL?.appendingPathComponent("trucks") else {
             completion(NSError())
@@ -213,7 +264,7 @@ class APIController {
             return
         }
         
-        URLSession.shared.dataTask(with: request) { data, response, error in
+        URLSession.shared.dataTask(with: request) { _, response, error in
             if let error = error {
                 DispatchQueue.main.async {
                     completion(error)
@@ -305,6 +356,100 @@ class APIController {
             
             DispatchQueue.main.async {
                 completion(nil)
+            }
+        }.resume()
+    }
+    
+    func addFavorite(truck: TruckRepresentation, with dinerID: Int, bearer: Bearer, completion: @escaping(Error?) -> ()) {
+        guard let id = truck.id, let requestURL = baseURL?.appendingPathComponent("favoritetrucks") else {
+            completion(NSError())
+            return
+        }
+        
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.post.rawValue
+        request.setValue(bearer.token, forHTTPHeaderField: "authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let encoder = JSONEncoder()
+        do {
+            let favoriteTruck = FavoriteTruckRepresentation(dinerID: dinerID, truckID: id)
+            let favoriteData = try encoder.encode(favoriteTruck)
+            request.httpBody = favoriteData
+        } catch let encodeError {
+            completion(encodeError)
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { _, response, error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    completion(error)
+                }
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse, response.statusCode != 201 {
+                DispatchQueue.main.async {
+                    completion(NSError())
+                }
+                return
+            }
+            
+            DispatchQueue.main.async {
+                completion(nil)
+            }
+        }.resume()
+    }
+    
+    func fetchFavorites(for diner: ConsumerLogin, with bearer: Bearer, completion: @escaping (Error?) -> ()) {
+        guard let id = diner.id, let requestURL = baseURL?.appendingPathComponent("favoritetrucks").appendingPathComponent("\(id)") else {
+            completion(NSError())
+            return
+        }
+        
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.get.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(bearer.token, forHTTPHeaderField: "authorization")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    completion(error)
+                }
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse, response.statusCode != 200 {
+                DispatchQueue.main.async {
+                    completion(NSError())
+                }
+                return
+            }
+            
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(NSError())
+                }
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            do {
+                let favoriteTrucks = try decoder.decode([FavoriteTruckRepresentation].self, from: data)
+                let moc = CoreDataStack.shared.container.newBackgroundContext()
+                moc.perform {
+                    for truck in favoriteTrucks {
+                        FavoriteTruck(dinerID: Int64(truck.dinerID), truckID: Int64(truck.truckID))
+                    }
+                }
+                try CoreDataStack.shared.save(context: moc)
+            } catch let decodeError {
+                DispatchQueue.main.async {
+                    completion(decodeError)
+                    return
+                }
             }
         }.resume()
     }
